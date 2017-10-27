@@ -1,0 +1,1161 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #fbfbfb;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transition: background .75s;
+  transition: background .75s;
+}
+body.green {
+  background: #71daa3;
+}
+body.green #copyright,
+body.green #forget {
+  color: #fff;
+}
+body.green #copyright a,
+body.green #forget a {
+  color: #fff;
+}
+body.purple {
+  background: #bf74c0;
+}
+body.purple #copyright,
+body.purple #forget {
+  color: #fff;
+}
+body.purple #copyright a,
+body.purple #forget a {
+  color: #fff;
+}
+body.blue {
+  background: #6eadfd;
+}
+body.blue #copyright,
+body.blue #forget {
+  color: #fff;
+}
+body.blue #copyright a,
+body.blue #forget a {
+  color: #fff;
+}
+body.turqoise {
+  background: #00d6bb;
+}
+body.turqoise #copyright,
+body.turqoise #forget {
+  color: #fff;
+}
+body.turqoise #copyright a,
+body.turqoise #forget a {
+  color: #fff;
+}
+.wrapper {
+  width: 100%;
+  min-height: 840px;
+}
+.wrapper .align {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+.wrapper .app {
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+  width: 394px;
+  min-height: 700px;
+  margin: 0 auto;
+  box-shadow: 0 14px 20px -5px rgba(0, 0, 0, 0.2);
+  border-radius: 22px;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+.wrapper .app #main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #444;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  /*
+			#info-msg.show + #settings.show{
+				filter:blur(2px);
+			}
+			*/
+}
+.wrapper .app #main #introscreen {
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff2c2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 9999;
+  pointer-events: none;
+  -ms-user-select: none;
+      user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+}
+.wrapper .app #main #introscreen img {
+  height: 300px;
+  color: #f5c34f;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+.wrapper .app #main #introscreen.sunloading img {
+  -webkit-transform: rotate(90deg) scale(5, 5);
+          transform: rotate(90deg) scale(5, 5);
+}
+.wrapper .app #main #introscreen.animfin {
+  visibility: hidden;
+  opacity: 0;
+}
+.wrapper .app #main #btn-right {
+  position: absolute;
+  width: 26px;
+  height: 22px;
+  text-align: center;
+  text-decoration: none;
+  z-index: 5;
+  color: #fff;
+}
+.wrapper .app #main #btn-right span {
+  display: block;
+  position: absolute;
+  opacity: 1;
+  background: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.wrapper .app #main #btn-right {
+  top: 16px;
+  right: 5px;
+  margin-right: 15px;
+}
+.wrapper .app #main #btn-right:hover {
+  cursor: pointer;
+}
+.wrapper .app #main #btn-right span:nth-child(n + 1):nth-child(-n + 4) {
+  width: 100%;
+  height: 3px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.wrapper .app #main #btn-right span:nth-child(1) {
+  top: 0px;
+}
+.wrapper .app #main #btn-right span:nth-child(n + 2):nth-child(-n + 3) {
+  top: 8px;
+}
+.wrapper .app #main #btn-right span:nth-child(4) {
+  top: 16px;
+}
+.wrapper .app #main #btn-right.open span {
+  background: #444;
+}
+.wrapper .app #main #btn-right.open span:nth-child(1),
+.wrapper .app #main #btn-right.open span:nth-child(4) {
+  top: 8px;
+  width: 0;
+}
+.wrapper .app #main #btn-right.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.wrapper .app #main #btn-right.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.wrapper .app #main #info-msg {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 9000;
+  -webkit-transition: .5s;
+  transition: .5s;
+  -webkit-backface-visibility: hidden;
+}
+.wrapper .app #main #info-msg.show {
+  opacity: 1;
+  visibility: visible;
+}
+.wrapper .app #main #info-msg .msg-box {
+  position: absolute;
+  width: 80%;
+  min-height: 150px;
+  left: 0;
+  right: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
+  text-align: center;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.wrapper .app #main #info-msg .msg-box .loader {
+  color: #444;
+  font-size: 10px;
+  margin: -30px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load1 1.3s infinite linear;
+  animation: load1 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load1 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load1 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+.wrapper .app #main #info-msg .msg-box.open {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-animation: open .5s;
+  animation: open .5s;
+}
+@-webkit-keyframes open {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  60% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  80% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes open {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  60% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  80% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+.wrapper .app #main #info-msg .msg-box h1 {
+  color: #444;
+  font-size: 20px;
+  width: 80%;
+  height: 19px;
+  line-height: 20px;
+  margin: 20px auto 0 auto;
+}
+.wrapper .app #main #info-msg .msg-box p {
+  color: #444;
+  line-height: 60px;
+  font-size: 14px;
+  width: 80%;
+  min-height: 60px;
+  margin: 10px auto 10px auto;
+}
+.wrapper .app #main #info-msg .msg-box p.loading {
+  line-height: 90px;
+}
+.wrapper .app #main #info-msg .msg-box #ok-btn {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  bottom: 0;
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-top: solid 1px rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.wrapper .app #main #info-msg .msg-box #ok-btn:hover {
+  background: #f9f9f9;
+}
+.wrapper .app #main #info-msg .msg-box #ok-btn:active {
+  background: #eaeaea;
+  line-height: 42px;
+}
+.wrapper .app #main #settings {
+  position: absolute;
+  width: 394px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: #f2f2f2;
+  z-index: 3;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+  border-radius: 20px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: .6s;
+  transition: .6s;
+  -webkit-transform: translateX(394px);
+          transform: translateX(394px);
+}
+.wrapper .app #main #settings.show {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+.wrapper .app #main #settings.show #settings-info {
+  color: #444;
+  background: #f9f9f9;
+}
+.wrapper .app #main #settings #settings-info {
+  height: 52px;
+  line-height: 52px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  background: #f9f9f9;
+  border-top-left-radius: 20px;
+  text-align: left;
+  font-size: 24px;
+  color: #f2f2f2;
+  letter-spacing: -1px;
+  text-indent: 10px;
+  -webkit-transition: 0.65s ease-out;
+  transition: 0.65s ease-out;
+}
+.wrapper .app #main #settings ul {
+  width: 90%;
+  height: auto;
+  margin: 10px auto 0 auto;
+}
+.wrapper .app #main #settings ul li {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+  list-style: none;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-transform: translateX(75px);
+          transform: translateX(75px);
+}
+.wrapper .app #main #settings ul li .text {
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+  text-indent: 12px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.wrapper .app #main #settings ul li .text .row {
+  width: 100%;
+}
+.wrapper .app #main #settings ul li .text .row span {
+  display: inline-block;
+  width: 20%;
+  height: 50px;
+  margin-left: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  -webkit-transition: .20s;
+  transition: .20s;
+}
+.wrapper .app #main #settings ul li .text .row span.green {
+  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
+  background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
+}
+.wrapper .app #main #settings ul li .text .row span.blue {
+  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
+  background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
+}
+.wrapper .app #main #settings ul li .text .row span.turqoise {
+  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+}
+.wrapper .app #main #settings ul li .text .row span.purple {
+  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+}
+.wrapper .app #main #settings ul li .text .row span.green.current,
+.wrapper .app #main #settings ul li .text .row span.blue.current,
+.wrapper .app #main #settings ul li .text .row span.turqoise.current,
+.wrapper .app #main #settings ul li .text .row span.purple.current {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.wrapper .app #main #settings ul li .text .row span.green.current::before,
+.wrapper .app #main #settings ul li .text .row span.blue.current::before,
+.wrapper .app #main #settings ul li .text .row span.turqoise.current::before,
+.wrapper .app #main #settings ul li .text .row span.purple.current::before {
+  content: "\f00c";
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  text-shadow: none;
+  font-size: 25px;
+  top: 5px;
+  left: 12px;
+  font-family: 'FontAwesome';
+}
+.wrapper .app #main #settings ul li .text .row span:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+.wrapper .app #main #settings ul li .sub-info {
+  position: relative;
+  width: 90%;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px auto -8px auto;
+  color: #727272;
+  font-size: 12px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.wrapper .app #main #settings ul li.slideAnimation {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+.wrapper .app #main #settings ul li .switch {
+  position: absolute;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  right: 7px;
+  top: 6px;
+  text-shadow: none;
+}
+.wrapper .app #main #settings ul li .switch input {
+  display: none;
+}
+.wrapper .app #main #settings ul li .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ececec;
+  -webkit-transition: background .20;
+  -webkit-transition: background .20s;
+  transition: background .20s;
+  border-radius: 34px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+.wrapper .app #main #settings ul li .slider span {
+  -webkit-transform: translate(-6px, -6px);
+          transform: translate(-6px, -6px);
+}
+.wrapper .app #main #settings ul li .slider .left,
+.wrapper .app #main #settings ul li .slider .right {
+  position: absolute;
+  width: 26px;
+  height: 28px;
+  top: 0px;
+  font-size: 18px;
+  z-index: 1;
+  text-align: center;
+  color: #727272;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+.wrapper .app #main #settings ul li .slider .left {
+  left: 0px;
+}
+.wrapper .app #main #settings ul li .slider .left i {
+  font-size: 17px;
+  -webkit-transform: translate(2px, 4px);
+          transform: translate(2px, 4px);
+}
+.wrapper .app #main #settings ul li .slider .left i.c {
+  position: absolute;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-transform: translate(-9px, 5px);
+          transform: translate(-9px, 5px);
+}
+.wrapper .app #main #settings ul li .slider .right {
+  right: 0px;
+}
+.wrapper .app #main #settings ul li .slider .right i {
+  font-size: 17px;
+  -webkit-transform: translate(0px, 4px);
+          transform: translate(0px, 4px);
+}
+.wrapper .app #main #settings ul li .slider .right i.f {
+  position: absolute;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-transform: translate(-12px, 5px);
+          transform: translate(-12px, 5px);
+}
+.wrapper .app #main #settings ul li .slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 2px;
+  bottom: 2px;
+  background: #fff;
+  -webkit-transition: .20s;
+  -webkit-transition: .20;
+  transition: .20;
+  border-radius: 50%;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+.wrapper .app #main #settings ul li input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  transform: translateX(24px);
+}
+.wrapper .app #main #settings ul li input:checked + .slider p {
+  color: #fff;
+}
+.wrapper .app #main #settings ul li input:not(:checked) + .slider {
+  background: #ececec;
+}
+.wrapper .app #main #settings .search-container {
+  position: relative;
+  width: 90%;
+  height: 50px;
+  margin: 30px auto 0 auto;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-transform: translateX(75px);
+          transform: translateX(75px);
+}
+.wrapper .app #main #settings .search-container.slideAnimation {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+.wrapper .app #main #settings .search-container #search {
+  position: relative;
+  width: 60%;
+  height: 35px;
+  margin: 0 auto;
+  float: left;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 15px;
+  background: #fff;
+  color: #444;
+  font-weight: bold;
+  text-indent: 30px;
+}
+.wrapper .app #main #settings .search-container #search:focus {
+  outline: none;
+}
+.wrapper .app #main #settings .search-container #search::-webkit-input-placeholder {
+  color: #444;
+  opacity: 1;
+  -webkit-transition: .4s;
+}
+.wrapper .app #main #settings .search-container #search:focus::-webkit-input-placeholder {
+  text-indent: 100%;
+  opacity: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.wrapper .app #main #settings .search-container #search::-moz-placeholder {
+  color: #444;
+  opacity: 1;
+  -moz-transition: .4s;
+}
+.wrapper .app #main #settings .search-container #search:focus::-moz-placeholder {
+  text-indent: 100%;
+  opacity: 0;
+  -moz-transition: .4s;
+}
+.wrapper .app #main #settings .search-container #search:-ms-input-placeholder {
+  color: #444;
+  opacity: 1;
+}
+.wrapper .app #main #settings .search-container #search:focus:-ms-input-placeholder {
+  text-indent: 100%;
+  opacity: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.wrapper .app #main #settings .search-container i {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-size: 17px;
+  left: 10px;
+  top: 8px;
+  color: #444;
+}
+.wrapper .app #main #settings #update-button,
+.wrapper .app #main #settings #save-button {
+  position: relative;
+  width: 35%;
+  height: 35px;
+  float: right;
+  border: none;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+.wrapper .app #main #settings #save-button {
+  position: absolute;
+  float: none;
+  margin: 0 auto;
+  bottom: 25px;
+  right: 0;
+  left: 0;
+}
+.wrapper .app #main #settings #update-button:hover,
+.wrapper .app #main #settings #save-button:hover {
+  opacity: 0.90;
+}
+.wrapper .app #main #settings #update-button:active,
+.wrapper .app #main #settings #save-button:active {
+  opacity: 1;
+  box-shadow: inset 0 1px 7px rgba(0, 0, 0, 0.25);
+  line-height: 37px;
+}
+.wrapper .app #main #settings.show + #central {
+  -webkit-transform: scale(0.87) translateX(25px);
+          transform: scale(0.87) translateX(25px);
+}
+.wrapper .app #main #central {
+  position: absolute;
+  width: 394px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: .6s;
+  transition: .6s;
+}
+.wrapper .app #main #central #top-menu-info {
+  position: absolute;
+  width: 100%;
+  height: 62px;
+  top: 0;
+  margin-top: 1px;
+}
+.wrapper .app #main #central #top-menu-info #location {
+  position: relative;
+  font-size: 27px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.wrapper .app #main #central #top-menu-info #location i {
+  font-size: 22px;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+.wrapper .app #main #central #temp-div {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-perspective: 1000;
+  -webkit-transition: 0.75s ease-in-out;
+  transition: 0.75s ease-in-out;
+}
+.wrapper .app #main #central #temp-div #icon-temp {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  text-align: Center;
+  font-size: 45px;
+  color: #fff;
+}
+.wrapper .app #main #central #temp-div #icon-temp i {
+  -webkit-transform: translateY(7px);
+          transform: translateY(7px);
+}
+.wrapper .app #main #central #temp-div #icon-temp p {
+  display: inline-block;
+  font-size: 30px;
+  max-width: 200px;
+}
+.wrapper .app #main #central #temp-div #current-temp-big {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+.wrapper .app #main #central #temp-div #current-temp-big #ctb {
+  font-size: 90px;
+  font-weight: bold;
+}
+.wrapper .app #main #central #temp-div #current-temp-big #ctbicon {
+  font-weight: 100;
+  font-size: 50px;
+  vertical-align: unset;
+}
+.wrapper .app #main #central #temp-div.weather-menu-show {
+  transform: translate(-80px, -320px) scale(0.7);
+  -webkit-transform: translate(-80px, -320px) scale(0.7);
+}
+.wrapper .app #main #central #weather-menu {
+  position: absolute;
+  width: 394px;
+  height: auto;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  -webkit-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-backface-visibility: hidden;
+}
+.wrapper .app #main #central #weather-menu.show {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+.wrapper .app #main #central #weather-menu.show #weather-menu-btn {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.wrapper .app #main #central #weather-menu.show ul {
+  opacity: 1;
+}
+.wrapper .app #main #central #weather-menu.settings {
+  background: #444;
+  color: #444;
+}
+.wrapper .app #main #central #weather-menu p {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  font-size: 26px;
+  line-height: 40px;
+  font-weight: 100;
+}
+.wrapper .app #main #central #weather-menu ul {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  list-style: none;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+.wrapper .app #main #central #weather-menu ul li {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 122px;
+  margin: 0px auto;
+  color: #fff;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+}
+.wrapper .app #main #central #weather-menu ul li.aswshow {
+  display: block;
+}
+.wrapper .app #main #central #weather-menu ul li.aswhidden {
+  display: none;
+}
+.wrapper .app #main #central #weather-menu ul li .day_left {
+  left: -5px;
+}
+.wrapper .app #main #central #weather-menu ul li .day_right {
+  right: -5px;
+}
+.wrapper .app #main #central #weather-menu ul li .day_left,
+.wrapper .app #main #central #weather-menu ul li .day_right {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 55px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  z-index: 100;
+}
+.wrapper .app #main #central #weather-menu ul li .day_left i,
+.wrapper .app #main #central #weather-menu ul li .day_right i {
+  font-size: 28px;
+}
+.wrapper .app #main #central #weather-menu ul li .day_left:hover,
+.wrapper .app #main #central #weather-menu ul li .day_right:hover {
+  cursor: pointer;
+  text-shadow: 0 0 20px #ffffff;
+}
+.wrapper .app #main #central #weather-menu ul li .col-1,
+.wrapper .app #main #central #weather-menu ul li .col-2,
+.wrapper .app #main #central #weather-menu ul li .col-3 {
+  display: inline-block;
+  width: 116px;
+  height: 72px;
+  margin: 0 auto;
+}
+.wrapper .app #main #central #weather-menu ul li .li_title {
+  padding: 12px 0;
+  font-size: 15px;
+  width: 100%;
+  height: 8px;
+  line-height: 8px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+.wrapper .app #main #central #weather-menu ul li #sunrise i,
+.wrapper .app #main #central #weather-menu ul li #sunset i,
+.wrapper .app #main #central #weather-menu ul li #totallight i,
+.wrapper .app #main #central #weather-menu ul li #humidity i,
+.wrapper .app #main #central #weather-menu ul li #pressure i,
+.wrapper .app #main #central #weather-menu ul li #visibility i,
+.wrapper .app #main #central #weather-menu ul li #chill i,
+.wrapper .app #main #central #weather-menu ul li #direction i,
+.wrapper .app #main #central #weather-menu ul li #speed i,
+.wrapper .app #main #central #weather-menu ul li .day10item i {
+  font-size: 26px;
+}
+.wrapper .app #main #central #weather-menu ul li #sunrise span,
+.wrapper .app #main #central #weather-menu ul li #sunset span,
+.wrapper .app #main #central #weather-menu ul li #totallight span,
+.wrapper .app #main #central #weather-menu ul li #humidity span,
+.wrapper .app #main #central #weather-menu ul li #pressure span,
+.wrapper .app #main #central #weather-menu ul li #visibility span,
+.wrapper .app #main #central #weather-menu ul li #chill span,
+.wrapper .app #main #central #weather-menu ul li #direction span,
+.wrapper .app #main #central #weather-menu ul li #speed span,
+.wrapper .app #main #central #weather-menu ul li .day10item span {
+  display: list-item;
+  margin-top: 4px;
+  font-size: 14px;
+}
+.wrapper .app #main #central #weather-menu ul li #hd,
+.wrapper .app #main #central #weather-menu ul li #pd,
+.wrapper .app #main #central #weather-menu ul li #vd,
+.wrapper .app #main #central #weather-menu ul li #srd,
+.wrapper .app #main #central #weather-menu ul li #td,
+.wrapper .app #main #central #weather-menu ul li #ssd,
+.wrapper .app #main #central #weather-menu ul li #cd,
+.wrapper .app #main #central #weather-menu ul li #dd,
+.wrapper .app #main #central #weather-menu ul li #sd {
+  margin-top: 0px;
+}
+.wrapper .app #main #central #weather-menu ul li #direction i {
+  font-size: 30px;
+}
+.wrapper .app #main #central #weather-menu ul li .li_row {
+  overflow: hidden;
+  width: 1110px;
+  height: 70px;
+  margin-top: 5px;
+  -webkit-transition: .25s;
+  transition: .25s;
+  z-index: 80;
+}
+.wrapper .app #main #central #weather-menu ul li #dotmenu {
+  width: 100%;
+  height: 27px;
+  margin: 10px auto 0 auto;
+  z-index: 1000;
+}
+.wrapper .app #main #central #weather-menu ul li #dotmenu span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 20px;
+  margin-left: 2px;
+  -webkit-transition: .25s;
+  transition: .25s;
+}
+.wrapper .app #main #central #weather-menu ul li #dotmenu span.currentday {
+  -webkit-transform: scale(1.6);
+          transform: scale(1.6);
+}
+.wrapper .app #main #central #weather-menu ul li #dotmenu span:hover {
+  cursor: pointer;
+}
+.wrapper .app #main #central #weather-menu #weather-menu-btn {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  -webkit-transition: .25s;
+  transition: .25s;
+}
+.wrapper .app #main #central #weather-menu #weather-menu-btn:hover {
+  text-shadow: 0 0 10px #ffffff;
+  cursor: pointer;
+}
+.wrapper .app #central.green {
+  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
+  background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
+}
+.wrapper .app #main.green.poor-Mozilla {
+  background: #f2f2f2;
+}
+.wrapper .app #main.green #settings ul li input:checked + .slider {
+  background: #71daa3;
+}
+.wrapper .app #main.green #settings #update-button,
+.wrapper .app #main.green #settings #save-button {
+  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
+  background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
+}
+.wrapper .app #main.green #info-msg .msg-box div {
+  color: #71daa3;
+}
+.wrapper .app #main.green > #central {
+  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
+  background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
+}
+.wrapper .app #central.blue {
+  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
+  background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
+}
+.wrapper .app #main.blue.poor-Mozilla {
+  background: #f2f2f2;
+}
+.wrapper .app #main.blue #settings ul li input:checked + .slider {
+  background: #6eadfd;
+}
+.wrapper .app #main.blue #settings #update-button,
+.wrapper .app #main.blue #settings #save-button {
+  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
+  background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
+}
+.wrapper .app #main.blue #info-msg .msg-box div {
+  color: #6eadfd;
+}
+.wrapper .app #main.blue > #central {
+  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
+  background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
+}
+.wrapper .app #main.purple.poor-Mozilla {
+  background: #f2f2f2;
+}
+.wrapper .app #main.purple #settings ul li input:checked + .slider {
+  background: #bf74c0;
+}
+.wrapper .app #main.purple #settings #update-button,
+.wrapper .app #main.purple #settings #save-button {
+  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+}
+.wrapper .app #main.purple #info-msg .msg-box div {
+  color: #bf74c0;
+}
+.wrapper .app #main.purple > #central {
+  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+}
+.wrapper .app #central.turqoise {
+  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+}
+.wrapper .app #main.turqoise.poor-Mozilla {
+  background: #f2f2f2;
+}
+.wrapper .app #main.turqoise #settings ul li input:checked + .slider {
+  background: #00d6bb;
+}
+.wrapper .app #main.turqoise #settings #update-button,
+.wrapper .app #main.turqoise #settings #save-button {
+  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+}
+.wrapper .app #main.turqoise #info-msg .msg-box div {
+  color: #00d6bb;
+}
+.wrapper .app #main.turqoise > #central {
+  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+}
+@-moz-document url-prefix() {
+  .wrapper .app #main #settings ul li .slider .left {
+    top: 0px;
+  }
+  .wrapper .app #main #settings ul li .slider .left i {
+    transform: translate(1px, 2px);
+  }
+  .wrapper .app #main #settings ul li .slider .left i.c {
+    transform: translate(-9px, 3px);
+  }
+  .wrapper .app #main #settings ul li .slider .right i {
+    top: 0px;
+    transform: translate(-1px, 2px);
+  }
+  .wrapper .app #main #settings ul li .slider .right i.f {
+    transform: translate(-12px, 3px);
+  }
+}
+#copyright {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #444;
+  width: 250px;
+  margin: 30px auto 0 auto;
+}
+#copyright a {
+  text-decoration: none;
+  color: #444;
+  -webkit-transition: all ease-in-out 0.35s;
+  transition: all ease-in-out 0.35s;
+}
+#copyright a:hover {
+  color: #777777;
+}
+#forget {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  color: #444;
+  margin: 25px auto 0 auto;
+  font-family: sans-serif;
+  width: 250px;
+  text-align: center;
+}
+#forget a {
+  text-decoration: none;
+  color: #444;
+  -webkit-transition: all ease-in-out 0.35s;
+  transition: all ease-in-out 0.35s;
+}
+#forget a:hover {
+  color: #777777;
+}
+#forget.hide {
+  -webkit-transition: all ease-in-out 0.35s;
+  transition: all ease-in-out 0.35s;
+  opacity: 0;
+}
