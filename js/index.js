@@ -38,58 +38,61 @@ $(document).ready(function(){
 			LoadedData;
 	
 	function WeatherIcon(d){
-		var icon = "wi ";
-    switch(parseInt(d)) {
-      case 0: 								icon += 'wi-tornado'; break;
-			case 1: case 3: case 4: icon += 'wi-thunderstorm'; break;
-			case 2: 								icon += 'wi-hurricane'; break;
-			case 5: 								icon += 'wi-rain-mix'; break;
-			case 6: case 7: 				icon += 'wi-sleet'; break;
-			case 8: case 9: 				icon += 'wi-raindrops'; break;
-			case 10: 								icon += 'wi-sprinkle'; break;
-			case 11: case 12: 			icon += 'wi-showers'; break;
-			case 13: case 14: 			icon += 'wi-snowflake-cold'; break;
- 			case 15: case 16: 			icon += 'wi-snow-wind'; break;
-      case 17: 								icon += 'wi-hail'; break;
-			case 18: 								icon += 'wi-sleet'; break;
-			case 19: 								icon += 'wi-dust'; break;
-			case 20: 								icon += 'wi-fog'; break;
-			case 21: 								icon += 'wi-day-haze'; break;
-			case 22: 								icon += 'wi-smog'; break;	
-			case 23: 								icon += 'wi-strong-wind'; break;
-			case 24: 								icon += 'wi-windy'; break;
-			case 25: 								icon += 'wi-thermometer-exterior'; break;
-			case 26:case 27:case 28:case 29:case 30:icon += 'wi-cloudy'; break;
-			case 31: case 33:			  icon += 'wi-night-clear'; break;
-			case 32: case 34:				icon += 'wi-day-sunny'; break;
-			case 35: 								icon += 'wi-hail'; break;
-			case 36: 								icon += 'wi-hot'; break;
-			case 37:case 38:case 39:icon += 'wi-thunderstorm'; break;
-			case 40: 								icon += 'wi-showers'; break;	
-			case 41:case 42:case 43:icon += 'wi-snow'; break;
-			case 44:  							icon += 'wi-cloudy'; break;
+		let icon = "";
+
+   		switch(parseInt(d)) {
+      		case 0: 								icon = 'wi wi-tornado'; break;
+			case 1: case 3: case 4: icon = 'wi-thunderstorm'; break;
+			case 2: 								icon = 'wi wi-hurricane'; break;
+			case 5: 								icon = 'wi wi-rain-mix'; break;
+			case 6: case 7: 						icon = 'wi wi-sleet'; break;
+			case 8: case 9: 						icon = 'wi wi-raindrops'; break;
+			case 10: 								icon = 'wi wi-sprinkle'; break;
+			case 11: case 12: 						icon = 'wi wi-showers'; break;
+			case 13: case 14: 						icon = 'wi wi-snowflake-cold'; break;
+ 			case 15: case 16: 						icon = 'wi wi-snow-wind'; break;
+      		case 17: 								icon = 'wi wi-hail'; break;
+			case 18: 								icon = 'wi wi-sleet'; break;
+			case 19: 								icon = 'wi wi-dust'; break;
+			case 20: 								icon = 'wi wi-fog'; break;
+			case 21: 								icon = 'wi wi-day-haze'; break;
+			case 22: 								icon = 'wi wi-smog'; break;	
+			case 23: 								icon = 'wi wi-strong-wind'; break;
+			case 24: 								icon = 'wi wi-windy'; break;
+			case 25: 								icon = 'wi wi-thermometer-exterior'; break;
+			case 26:case 27:case 28:case 29:case 30:icon = 'wi wi-cloudy'; break;
+			case 31: case 33:			  			icon = 'wi wi-night-clear'; break;
+			case 32: case 34:						icon = 'wi wi-day-sunny'; break;
+			case 35: 								icon = 'wi wi-hail'; break;
+			case 36: 								icon = 'wi wi-hot'; break;
+			case 37:case 38:case 39: 				icon = 'wi wi-thunderstorm'; break;
+			case 40: 								icon = 'wi wi-showers'; break;	
+			case 41:case 42:case 43: 				icon = 'wi wi-snow'; break;
+			case 44:  								icon = 'wi wi-cloudy'; break;
 				
-			default:								icon += 'wi-na';
-    }		
+			default:								icon = 'wi wi-na';
+   		}				
 		return icon;
 	}	
 	function ApplyData(d){
 			// Location
 		var $locspan = $('#location span'),
-				$ctbicon = $('#ctbicon'),
-				$ctb = $('#ctb'),
-			  $icontempi = $('#icon-temp i'),
-				$icontempp = $('#icon-temp p');
-				
+			$ctbicon = $('#ctbicon'),
+			$ctb = $('#ctb'),
+		  	$icontempi = $('#icon-temp i'),
+			$icontempp = $('#icon-temp p');	
 		$locspan.text(d.location.city);
-			// Central Info
+		
+		// Central Info
 		let currentTemp = d.item.condition.temp;
 		let icon = WeatherIcon(d.item.condition.code);
 
-		if(SettingsArray[0] == 1){
+		if(SettingsArray[0] == 1)
+		{
 			$ctbicon.text("°C");
 		}
-		else{
+		else
+		{
 			$ctbicon.text("°F");
 			currentTemp = (convertToF(currentTemp)).replace("°F",""); 
 		}
@@ -97,103 +100,125 @@ $(document).ready(function(){
 		$icontempi.removeClass().addClass(icon);
 		$icontempp.text(d.item.condition.text);
 		
-				//Atmospheric Conditions
+		//Atmospheric Conditions
 		var $atm = $('#atm'),
-				$atmli = $('#atmli'),
-				$hd=$('#hd'),
-				$pd=$('#pd'),
-				$vd=$('#vd');
+			$atmli = $('#atmli'),
+			$hd = $('#hd'),
+			$pd = $('#pd'),
+			$vd = $('#vd');
 		
-		if( $atm.prop('checked') == true ){	
+		if( $atm.prop('checked') == true )
+		{	
 			$atmli.removeClass().addClass('aswshown');
 			
 			let pressure = d.atmosphere.pressure;
 			let visib = d.atmosphere.visibility;
 
-			if(SettingsArray[0] == 1){
-					pressure = parseFloat((pressure * 0.02953)/1.3332239).toFixed(2) + " mmHg";
-					visib = parseFloat(visib).toFixed(2) + " " + d.units.distance;
+			if(SettingsArray[0] == 1)
+			{
+				pressure = parseFloat((pressure * 0.02953)/1.3332239).toFixed(2) + " mmHg";
+				visib = parseFloat(visib).toFixed(2) + " " + d.units.distance;
 			}
-			else{
-					pressure = parseFloat(pressure * 0.02953).toFixed(2) + " in";
-					visib = parseFloat(visib / 1.60934 ).toFixed(2) + " mi";
+			else
+			{
+				pressure = parseFloat(pressure * 0.02953).toFixed(2) + " in";
+				visib = parseFloat(visib / 1.60934 ).toFixed(2) + " mi";
 			}
 			$hd.text(d.atmosphere.humidity + "%");
 			$pd.text(pressure);
 			$vd.text(visib);
 		}
-		else{
+		else
+		{
 			$atmli.removeClass().addClass('aswhidden');
 		}
-			//Sunrise/Sunset
+		//Sunrise/Sunset
 		var $sun =  $('#sun'),
-				$sunli = $('#sunli'),
-				$srd = $('#srd'),
-				$ssd = $('#ssd'),
-				$td = $('#td');
+			$sunli = $('#sunli'),
+			$srd = $('#srd'),
+			$ssd = $('#ssd'),
+			$td = $('#td');
 		
-		if( $sun.prop('checked') == true ){
+		if( $sun.prop('checked') == true )
+		{
 			$sunli.removeClass().addClass('aswshown');
 			let sunrise = d.astronomy.sunrise.replace(" am","").split(":");
 			let sunset = d.astronomy.sunset.replace(" pm","").split(":");
 			
-			if(sunset[1].length < 2){
+			if(sunset[1].length < 2)
+			{
 				sunset[1] = "0" + sunset[1];
 			}
 			
-			if(SettingsArray[0] == 1){
-					$srd.text( sunrise[0] + ":" + sunrise[1] );
-					$ssd.text( (parseInt(sunset[0]) + 12) + ":" + sunset[1]) ;
+			if(SettingsArray[0] == 1)
+			{
+				$srd.text( sunrise[0] + ":" + sunrise[1] );
+				$ssd.text( (parseInt(sunset[0]) + 12) + ":" + sunset[1]) ;
 			}
-			else{
-					$srd.text( sunrise[0] + ":" + sunrise[1] + " am");
-					$ssd.text( sunset[0]+ ":" + sunset[1] + " pm");
+			else
+			{
+				$srd.text( sunrise[0] + ":" + sunrise[1] + " am");
+				$ssd.text( sunset[0]+ ":" + sunset[1] + " pm");
 			}
 			let totalHours = (parseInt(sunset[0]) + 12) - parseInt(sunrise[0]);
 			let minDif,
-					sr = parseInt(sunrise[1]),
-					ss = parseInt(sunset[1]);
+				sr = parseInt(sunrise[1]),
+				ss = parseInt(sunset[1]);
+
 			if( sr < ss ){
 				minDif = ss - sr;
-			}else{
+			}
+			else
+			{
 				minDif = (60 - sr) + ss;
 			}
 			$td.text(totalHours + ":" + minDif);
 		}
-		else{
+		else
+		{
 			$sunli.removeClass().addClass('aswhidden');
 		}
 		// Wind Conditions
 		var $wind = $('#wind'),
-				$windli = $('#windli'),
-				$cd = $('#cd'),		
-				$sd	=	$('#sd'),
-				$cd	=	$('#cd'),
-				$dd	=	$('#dd'),
-				$directioni	=	$('#direction i')
+			$windli = $('#windli'),
+			$cd = $('#cd'),		
+			$sd	=	$('#sd'),
+			$cd	=	$('#cd'),
+			$dd	=	$('#dd'),
+			$directioni	=	$('#direction i');
 		
-		if($wind.prop('checked') == true ){
+		if($wind.prop('checked') == true )
+		{
 			$windli.removeClass().addClass('aswshown');
 			let speedWind = d.wind.speed,
 				tempChillText = "",
 				tempChill = d.wind.chill;
 
-			if(SettingsArray[0] == 1){
+			if(SettingsArray[0] == 1)
+			{
 				speedWind = d.wind.speed + " km/h";
 				tempChill += "°C";
 			}
-			else{
+			else
+			{
 				speedWind = parseFloat(speedWind / 1.60934).toFixed(2) + " mph";
 				tempChill = convertToF(tempChill); 
 			}
 			let iconWind = "wi "
-			if(d.wind.direction >= 0 && d.wind.direction <= 90){
+			if(d.wind.direction >= 0 && d.wind.direction <= 90)
+			{
 				iconWind += "wi-direction-right";
-			}else if(d.wind.direction > 90 && d.wind.direction <= 180){
+			}
+			else if(d.wind.direction > 90 && d.wind.direction <= 180)
+			{
 				iconWind += "wi-direction-up";
-			}else if(d.wind.direction > 180 && d.wind.direction <= 270){
+			}
+			else if(d.wind.direction > 180 && d.wind.direction <= 270)
+			{
 				iconWind += "wi-direction-left";
-			}else if(d.wind.direction > 270 && d.wind.direction <= 360){
+			}
+			else if(d.wind.direction > 270 && d.wind.direction <= 360)
+			{
 				iconWind += "wi-direction-down";
 			}
 			
@@ -201,22 +226,28 @@ $(document).ready(function(){
 			$cd.text(tempChill);
 			$directioni.removeClass().addClass(iconWind);
 			$dd.text(d.wind.direction + "°");
-		}else{
+		}
+		else
+		{
 			$windli.removeClass().addClass('aswhidden');
 		}
 		
 				// 9 Days forecast
 		var $10days = $('.day10item');
-		for(var item = 0; item < $10days.length; item++){
+		for(var item = 0; item < $10days.length; item++)
+		{
 			let CurrentDay = d.item.forecast[item+1].day;
 			let CurrentTemp = d.item.forecast[item+1].high;
 			let CurrentTempLow = d.item.forecast[item+1].low;
 			let CurrentIcon = WeatherIcon(d.item.forecast[item+1].code);
 			
-			if(SettingsArray[0] == 1) {
+			if(SettingsArray[0] == 1)
+			{
 				CurrentTemp += "°C";
 				CurrentTempLow += "°C";
-			}else{
+			}
+			else
+			{
 				CurrentTemp = convertToF(CurrentTemp); 
 				CurrentTempLow = convertToF(CurrentTempLow); 
 			}
@@ -231,8 +262,8 @@ $(document).ready(function(){
   	$.getJSON(querie, function(data) {
   		LoadedData = data.query.results.channel;
 			//console.log(LoadedData);
-			
-			if(LoadedData != null){
+			if(LoadedData != null)
+			{
 				//Apply data to elements
 				ApplyData(LoadedData);
 			}
@@ -246,22 +277,26 @@ $(document).ready(function(){
 	function LoadLocalStorage(){
 		LocalSettings = localStorage.getItem('SavedData');
 		
-		if (LocalSettings == null){
+		if (LocalSettings == null)
+		{
 			var Settings = '1,1,1,1,' + arrayThemes[randomTheme] + ',Bucharest';
 			SettingsArray = Settings.split(',');
 
 			getWeather('London');
 			toLocalStorage();
 		}
-		else{
+		else
+		{
 			SettingsArray = LocalSettings.split(',');
 			getWeather(SettingsArray[SettingsArray.length-1]);
 		}
 	}
 	function LoadCheckboxSettings(){	
 		// General Settings
-		for(var i = 0; i < array_ID.length; i++){
-			if(SettingsArray[i] == '1'){
+		for(var i = 0; i < array_ID.length; i++)
+		{
+			if(SettingsArray[i] == '1')
+			{
 				 $(array_ID[i]).prop('checked',true);
 			}
 		}
@@ -276,26 +311,30 @@ $(document).ready(function(){
 		$InfoMsgBx.find('h1').text(info[value][0]);
 		$InfoMsgBx.find('p').text(info[value][1]).removeClass('loading');
 
-		if(type === 0){
+		if(type === 0)
+		{
 			$InfoMsgBx.append("<div id='ok-btn'>Ok</div>");
 		}
-		else{
-			//append loading
+		else
+		{
+			//Append loading
 			$InfoMsgBx.find('.loader').remove();
 			$InfoMsgBx.find('p').css("opacity", "0");
 			$InfoMsgBx.append("<div class='loader'></div>");
 			
-				setTimeout(function () {
-					$InfoMsgBx.find('p').addClass('loading').animate({opacity: 1});
-					$InfoMsgBx.find('.loader').remove();
-				}, 1750);
+			setTimeout(function () {
+				$InfoMsgBx.find('p').addClass('loading').animate({opacity: 1});
+				$InfoMsgBx.find('.loader').remove();
+			}, 1750);
 			
 		}
 	}
 	function isValid(string) {
 		var char = '~`!#$%^&*+=[]\';,/{}|\":<>?@1234567890';
-		for (var i = 0; i < string.length; i++) {
-			if (char.indexOf(string.charAt(i)) != -1) {
+		for (var i = 0; i < string.length; i++)
+		{
+			if (char.indexOf(string.charAt(i)) != -1)
+			{
 				GetData = false;
 				return false;
 			}
@@ -303,10 +342,15 @@ $(document).ready(function(){
 	}
 	function checkBlank(string) {
 		var count = 0;
-		for (var i = 0; i < string.length; i++) {
-			if( string[i] == " " ) {count += 1;}
+		for (var i = 0; i < string.length; i++)
+		{
+			if( string[i] == " " )
+			{
+				count += 1;
+			}
 		}
-		if( string.length == count || string.length <= 3 ){ 
+		if( string.length == count || string.length <= 3 )
+		{ 
 			GetData = false; 
 			return true; 
 		}
@@ -334,11 +378,16 @@ $(document).ready(function(){
 		return temp;
 	}
 	// Update Checkbox
-	$('input[type=checkbox]').on('change',function(e){
+	$('input[type=checkbox]').on('change',function(e)
+	{
 		let index = $( 'input[type=checkbox]' ).index(this);
-		if( $(this).prop('checked') ){
+
+		if( $(this).prop('checked') )
+		{
 			SettingsArray[index] = '1';
-		}else{
+		}
+		else
+		{
 			SettingsArray[index] = '0';
 		}
 	})
@@ -348,7 +397,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var $CurrentButton = $(this);
 		
-		if( $CurrentButton.is("#btn-right") ){
+		if( $CurrentButton.is("#btn-right") )
+		{
 			$rightButton.toggleClass('open');
 			$rightMenu.toggleClass('show');
 			
@@ -358,38 +408,45 @@ $(document).ready(function(){
 		{
 			$weatherMenu.toggleClass('show');
 			
-			if( $tempDiv.hasClass('') ){
+			if( $tempDiv.hasClass('') )
+			{
 				$tempDiv.addClass('weather-menu-show');
 			}
-			else{
+			else
+			{
 				$tempDiv.removeClass('weather-menu-show');
 			}
 		}
 		
-		if( $rightMenu.hasClass('show') ){
+		if( $rightMenu.hasClass('show') )
+		{
 			$rightButton.prop('disabled', true);
 			$Main.removeClass('poor-Mozilla');
 			
 			$('body').addClass(SettingsArray[4]);
-			$(settingsList).each(function(j){
+			$(settingsList).each(function(j)
+			{
 				setTimeout(function () {
 					$(settingsList[j]).addClass('slideAnimation'); 
 				}, 35 * j);
 			});
 
-			setTimeout(function(){
+			setTimeout(function()
+			{
 				$rightButton.prop('disabled', false);
 				$Main.addClass('poor-Mozilla');
 			}, 595);	
 		}
-		else if( $rightMenu.hasClass('') ){
+		else if( $rightMenu.hasClass('') )
+		{
 			$rightButton.prop('disabled', true);
 			$Main.removeClass('poor-Mozilla');
 			
 			ApplyData(LoadedData);
 			
 			$('body').removeAttr('class');
-			setTimeout(function(){
+			setTimeout(function()
+			{
 				$rightButton.prop('disabled', false);
 					$(settingsList).each(function(j){
 						$(this).removeClass('slideAnimation'); 
@@ -402,7 +459,8 @@ $(document).ready(function(){
 	// Change Theme
 	$('.row').on('click','span',function(e){
 		var new_theme = $(this).attr('class').split(' ');
-		if( new_theme[1] != 'current' ){
+		if( new_theme[1] != 'current' )
+		{
 			$('.row span.' + SettingsArray[4]).removeClass('current');
 			$(this).addClass('current');
 
@@ -416,15 +474,18 @@ $(document).ready(function(){
 	$('#settings').on('click','#update-button',function(e){
 		temp_location = $('#search').val();
 		
-		if( temp_location == "" ){
+		if( temp_location == "" )
+		{
 			temp_location = SettingsArray[5];
 			GetData = true;
 		}
-		else{
+		else
+		{
 			var checkforinvalid = isValid(temp_location);
 			var checkforblank = checkBlank(temp_location);
 
-			if( $rightMenu.hasClass('show') && (checkforinvalid == false || checkforblank == true ) ){			
+			if( $rightMenu.hasClass('show') && (checkforinvalid == false || checkforblank == true ) )
+			{			
 				UpdateErrorMsg("Char",0);
 			}
 			else{
@@ -445,7 +506,8 @@ $(document).ready(function(){
 	
 	// Error Button
 	$('#info-msg').on('click','#ok-btn',function(e){
-		if( $Info.hasClass('show') ){
+		if( $Info.hasClass('show') )
+		{
 			$Info.removeClass('show');
 			$InfoMsgBx.removeClass('open');	
 			$InfoMsgBx.find('#ok-btn').remove();	
@@ -455,13 +517,15 @@ $(document).ready(function(){
 	// Save button
 	$('#settings').on('click','#save-button',function(e){		
 		// Check if location is valid or not and add the info msg.
-		if( $rightMenu.hasClass('show') && ( GetData == false ) ){
+		if( $rightMenu.hasClass('show') && ( GetData == false ) )
+		{
 			$Info.addClass('show');
 			$InfoMsgBx.addClass('open');
 			
 			UpdateErrorMsg("Loc",0);
 		}
-		else{			
+		else
+		{			
 			UpdateErrorMsg("Loading2",1);
 			
 			setTimeout(function(){
@@ -476,16 +540,20 @@ $(document).ready(function(){
 	$('#weather-menu').on('click','.day_left, .day_right, #dotmenu span',function(){
 		var $button = $(this);
 		
-		if( $button.hasClass('day_right') && currentSlide != 2 ){
+		if( $button.hasClass('day_right') && currentSlide != 2 )
+		{
 			currentSlide += 1;
 		 }
-		else if( $button.hasClass('day_left') && currentSlide != 0){
+		else if( $button.hasClass('day_left') && currentSlide != 0)
+		{
 			currentSlide -= 1;
 		}
-		else if( $button.hasClass('') ){
+		else if( $button.hasClass('') )
+		{
 			var indexbtn = $button.index();
 			currentSlide = indexbtn;
 		}	
+
 		$('.li_row').css('transform', 'translateX(-' + currentSlideX[currentSlide] + 'px)');
 		$('.currentday').removeClass('currentday');
 		$dotmenu.eq(currentSlide).addClass('currentday');
