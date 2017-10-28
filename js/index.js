@@ -41,17 +41,17 @@ $(document).ready(function(){
 		let icon = "";
 
    		switch(parseInt(d)) {
-      		case 0: 								icon = 'wi wi-tornado'; break;
+      case 0: 								icon = 'wi wi-tornado'; break;
 			case 1: case 3: case 4: icon = 'wi-thunderstorm'; break;
 			case 2: 								icon = 'wi wi-hurricane'; break;
 			case 5: 								icon = 'wi wi-rain-mix'; break;
-			case 6: case 7: 						icon = 'wi wi-sleet'; break;
-			case 8: case 9: 						icon = 'wi wi-raindrops'; break;
+			case 6: case 7: 				icon = 'wi wi-sleet'; break;
+			case 8: case 9: 				icon = 'wi wi-raindrops'; break;
 			case 10: 								icon = 'wi wi-sprinkle'; break;
-			case 11: case 12: 						icon = 'wi wi-showers'; break;
-			case 13: case 14: 						icon = 'wi wi-snowflake-cold'; break;
- 			case 15: case 16: 						icon = 'wi wi-snow-wind'; break;
-      		case 17: 								icon = 'wi wi-hail'; break;
+			case 11: case 12: 			icon = 'wi wi-showers'; break;
+			case 13: case 14: 			icon = 'wi wi-snowflake-cold'; break;
+ 			case 15: case 16: 			icon = 'wi wi-snow-wind'; break;
+      case 17: 								icon = 'wi wi-hail'; break;
 			case 18: 								icon = 'wi wi-sleet'; break;
 			case 19: 								icon = 'wi wi-dust'; break;
 			case 20: 								icon = 'wi wi-fog'; break;
@@ -61,14 +61,14 @@ $(document).ready(function(){
 			case 24: 								icon = 'wi wi-windy'; break;
 			case 25: 								icon = 'wi wi-thermometer-exterior'; break;
 			case 26:case 27:case 28:case 29:case 30:icon = 'wi wi-cloudy'; break;
-			case 31: case 33:			  			icon = 'wi wi-night-clear'; break;
-			case 32: case 34:						icon = 'wi wi-day-sunny'; break;
+			case 31: case 33:			  icon = 'wi wi-night-clear'; break;
+			case 32: case 34:				icon = 'wi wi-day-sunny'; break;
 			case 35: 								icon = 'wi wi-hail'; break;
 			case 36: 								icon = 'wi wi-hot'; break;
-			case 37:case 38:case 39: 				icon = 'wi wi-thunderstorm'; break;
+			case 37:case 38:case 39:icon = 'wi wi-thunderstorm'; break;
 			case 40: 								icon = 'wi wi-showers'; break;	
-			case 41:case 42:case 43: 				icon = 'wi wi-snow'; break;
-			case 44:  								icon = 'wi wi-cloudy'; break;
+			case 41:case 42:case 43:icon = 'wi wi-snow'; break;
+			case 44:  							icon = 'wi wi-cloudy'; break;
 				
 			default:								icon = 'wi wi-na';
    		}				
@@ -107,7 +107,7 @@ $(document).ready(function(){
 			$pd = $('#pd'),
 			$vd = $('#vd');
 		
-		if( $atm.prop('checked') == true )
+		if( $atm.prop('checked') === true )
 		{	
 			$atmli.removeClass().addClass('aswshown');
 			
@@ -139,7 +139,7 @@ $(document).ready(function(){
 			$ssd = $('#ssd'),
 			$td = $('#td');
 		
-		if( $sun.prop('checked') == true )
+		if( $sun.prop('checked') === true )
 		{
 			$sunli.removeClass().addClass('aswshown');
 			let sunrise = d.astronomy.sunrise.replace(" am","").split(":");
@@ -180,14 +180,13 @@ $(document).ready(function(){
 		}
 		// Wind Conditions
 		var $wind = $('#wind'),
-			$windli = $('#windli'),
-			$cd = $('#cd'),		
-			$sd	=	$('#sd'),
-			$cd	=	$('#cd'),
-			$dd	=	$('#dd'),
-			$directioni	=	$('#direction i');
+				$windli = $('#windli'),
+				$sd	=	$('#sd'),
+				$cd	=	$('#cd'),
+				$dd	=	$('#dd'),
+				$directioni	=	$('#direction i');
 		
-		if($wind.prop('checked') == true )
+		if($wind.prop('checked') === true )
 		{
 			$windli.removeClass().addClass('aswshown');
 			let speedWind = d.wind.speed,
@@ -204,7 +203,7 @@ $(document).ready(function(){
 				speedWind = parseFloat(speedWind / 1.60934).toFixed(2) + " mph";
 				tempChill = convertToF(tempChill); 
 			}
-			let iconWind = "wi "
+			let iconWind = "wi ";
 			if(d.wind.direction >= 0 && d.wind.direction <= 90)
 			{
 				iconWind += "wi-direction-right";
@@ -257,12 +256,12 @@ $(document).ready(function(){
 		}
 	}
 	function getWeather(loc){
-		let querie = 'https://query.yahooapis.com/v1/public/yql?q=select units,astronomy,atmosphere,wind,location,item from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+ loc +'") and u="c"&format=json'
+		let querie = 'https://query.yahooapis.com/v1/public/yql?q=select units,astronomy,atmosphere,wind,location,item from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+ loc +'") and u="c"&format=json';
 		
   	$.getJSON(querie, function(data) {
   		LoadedData = data.query.results.channel;
 			//console.log(LoadedData);
-			if(LoadedData != null)
+			if(LoadedData !== null)
 			{
 				//Apply data to elements
 				ApplyData(LoadedData);
@@ -277,7 +276,7 @@ $(document).ready(function(){
 	function LoadLocalStorage(){
 		LocalSettings = localStorage.getItem('SavedData');
 		
-		if (LocalSettings == null)
+		if (LocalSettings === null)
 		{
 			var Settings = '1,1,1,1,' + arrayThemes[randomTheme] + ',Bucharest';
 			SettingsArray = Settings.split(',');
@@ -390,7 +389,7 @@ $(document).ready(function(){
 		{
 			SettingsArray[index] = '0';
 		}
-	})
+	});
 	
 	// Open Settings Menu
 	$('#main').on('click','#btn-right, #weather-menu-btn',function(e){
@@ -454,7 +453,7 @@ $(document).ready(function(){
 				$Main.addClass('poor-Mozilla');
 			}, 595);
 		}
-	})
+	});
 	
 	// Change Theme
 	$('.row').on('click','span',function(e){
@@ -468,13 +467,13 @@ $(document).ready(function(){
 		}
 		$Main.removeAttr('class').addClass(SettingsArray[4] + ' poor-Mozilla');
 		$('body').removeAttr('class').addClass(SettingsArray[4]);
-	})
+	});
 
 	// Update Button
 	$('#settings').on('click','#update-button',function(e){
 		temp_location = $('#search').val();
 		
-		if( temp_location == "" )
+		if( temp_location === "" )
 		{
 			temp_location = SettingsArray[5];
 			GetData = true;
@@ -484,7 +483,7 @@ $(document).ready(function(){
 			var checkforinvalid = isValid(temp_location);
 			var checkforblank = checkBlank(temp_location);
 
-			if( $rightMenu.hasClass('show') && (checkforinvalid == false || checkforblank == true ) )
+			if( $rightMenu.hasClass('show') && (checkforinvalid === false || checkforblank === true ) )
 			{			
 				UpdateErrorMsg("Char",0);
 			}
@@ -502,7 +501,7 @@ $(document).ready(function(){
 				}, 2500);
 			}
 		}
-	})
+	});
 	
 	// Error Button
 	$('#info-msg').on('click','#ok-btn',function(e){
@@ -512,12 +511,12 @@ $(document).ready(function(){
 			$InfoMsgBx.removeClass('open');	
 			$InfoMsgBx.find('#ok-btn').remove();	
 		}
-	})
+	});
 	
 	// Save button
 	$('#settings').on('click','#save-button',function(e){		
 		// Check if location is valid or not and add the info msg.
-		if( $rightMenu.hasClass('show') && ( GetData == false ) )
+		if( $rightMenu.hasClass('show') && ( GetData === false ) )
 		{
 			$Info.addClass('show');
 			$InfoMsgBx.addClass('open');
@@ -535,7 +534,7 @@ $(document).ready(function(){
 				toLocalStorage();
 			}, 2500);
 		}
-	})
+	});
 	
 	$('#weather-menu').on('click','.day_left, .day_right, #dotmenu span',function(){
 		var $button = $(this);
@@ -544,7 +543,7 @@ $(document).ready(function(){
 		{
 			currentSlide += 1;
 		 }
-		else if( $button.hasClass('day_left') && currentSlide != 0)
+		else if( $button.hasClass('day_left') && currentSlide !== 0 )
 		{
 			currentSlide -= 1;
 		}
@@ -557,7 +556,7 @@ $(document).ready(function(){
 		$('.li_row').css('transform', 'translateX(-' + currentSlideX[currentSlide] + 'px)');
 		$('.currentday').removeClass('currentday');
 		$dotmenu.eq(currentSlide).addClass('currentday');
-	})
+	});
 	//End buttons
 	
 	LoadIntro();
