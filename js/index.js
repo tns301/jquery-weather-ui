@@ -41,7 +41,7 @@ $(document).ready(function(){
 		let icon = "";
 
    		switch(parseInt(d)) {
-      case 0: 								icon = 'wi wi-tornado'; break;
+      		case 0: 								icon = 'wi wi-tornado'; break;
 			case 1: case 3: case 4: icon = 'wi-thunderstorm'; break;
 			case 2: 								icon = 'wi wi-hurricane'; break;
 			case 5: 								icon = 'wi wi-rain-mix'; break;
@@ -51,7 +51,7 @@ $(document).ready(function(){
 			case 11: case 12: 			icon = 'wi wi-showers'; break;
 			case 13: case 14: 			icon = 'wi wi-snowflake-cold'; break;
  			case 15: case 16: 			icon = 'wi wi-snow-wind'; break;
-      case 17: 								icon = 'wi wi-hail'; break;
+      		case 17: 								icon = 'wi wi-hail'; break;
 			case 18: 								icon = 'wi wi-sleet'; break;
 			case 19: 								icon = 'wi wi-dust'; break;
 			case 20: 								icon = 'wi wi-fog'; break;
@@ -80,7 +80,8 @@ $(document).ready(function(){
 			$ctbicon = $('#ctbicon'),
 			$ctb = $('#ctb'),
 		  	$icontempi = $('#icon-temp i'),
-			$icontempp = $('#icon-temp p');	
+			$icontempp = $('#icon-temp p');
+			
 		$locspan.text(d.location.city);
 		
 		// Central Info
