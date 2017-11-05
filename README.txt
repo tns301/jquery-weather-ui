@@ -1,4 +1,5 @@
-A Pen created at CodePen.io. You can find this one at https://codepen.io/tns301/details/yXLWjQ/ .
+A Pen created at CodePen.io. You can find this one at https://codepen.io/tns301/details/yXLWjQ/ . 
+This Pen was featured on the frontpage at CodePen.io and UpLabs.com.
 
 Hello,
 
