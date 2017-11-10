@@ -332,7 +332,7 @@ $(document).ready(function(){
 		var char = '~`!#$%^&*+=[]\';,/{}|\":<>?@1234567890';
 		for (var i = 0; i < string.length; i++)
 		{
-			if (char.indexOf(string.charAt(i)) != -1)
+			if ( char.indexOf(string.charAt(i)) != -1 )
 			{
 				GetData = false;
 				return false;
@@ -552,7 +552,6 @@ $(document).ready(function(){
 			var indexbtn = $button.index();
 			currentSlide = indexbtn;
 		}	
-
 		$('.li_row').css('transform', 'translateX(-' + currentSlideX[currentSlide] + 'px)');
 		$('.currentday').removeClass('currentday');
 		$dotmenu.eq(currentSlide).addClass('currentday');
