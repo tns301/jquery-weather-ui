@@ -39,7 +39,6 @@ $(document).ready(function(){
 	
 	function WeatherIcon(d){
 		let icon = "";
-
    		switch(parseInt(d)) {
       		case 0: 								icon = 'wi wi-tornado'; break;
 			case 1: case 3: case 4: icon = 'wi-thunderstorm'; break;
@@ -232,7 +231,7 @@ $(document).ready(function(){
 			$windli.removeClass().addClass('aswhidden');
 		}
 		
-				// 9 Days forecast
+		// 9 Days forecast
 		var $10days = $('.day10item');
 		for(var item = 0; item < $10days.length; item++)
 		{
