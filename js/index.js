@@ -39,18 +39,19 @@ $(document).ready(function(){
 	
 	function WeatherIcon(d){
 		let icon = "";
+
    		switch(parseInt(d)) {
-      		case 0: 								icon = 'wi wi-tornado'; break;
-			case 1: case 3: case 4: icon = 'wi-thunderstorm'; break;
+			case 0: 								icon = 'wi wi-tornado'; break;
+			case 1: case 3: case 4: 				icon = 'wi-thunderstorm'; break;
 			case 2: 								icon = 'wi wi-hurricane'; break;
 			case 5: 								icon = 'wi wi-rain-mix'; break;
-			case 6: case 7: 				icon = 'wi wi-sleet'; break;
-			case 8: case 9: 				icon = 'wi wi-raindrops'; break;
+			case 6: case 7: 						icon = 'wi wi-sleet'; break;
+			case 8: case 9: 						icon = 'wi wi-raindrops'; break;
 			case 10: 								icon = 'wi wi-sprinkle'; break;
-			case 11: case 12: 			icon = 'wi wi-showers'; break;
-			case 13: case 14: 			icon = 'wi wi-snowflake-cold'; break;
- 			case 15: case 16: 			icon = 'wi wi-snow-wind'; break;
-      		case 17: 								icon = 'wi wi-hail'; break;
+			case 11: case 12: 						icon = 'wi wi-showers'; break;
+			case 13: case 14: 						icon = 'wi wi-snowflake-cold'; break;
+			case 15: case 16: 						icon = 'wi wi-snow-wind'; break;
+			case 17: 								icon = 'wi wi-hail'; break;
 			case 18: 								icon = 'wi wi-sleet'; break;
 			case 19: 								icon = 'wi wi-dust'; break;
 			case 20: 								icon = 'wi wi-fog'; break;
@@ -60,34 +61,34 @@ $(document).ready(function(){
 			case 24: 								icon = 'wi wi-windy'; break;
 			case 25: 								icon = 'wi wi-thermometer-exterior'; break;
 			case 26:case 27:case 28:case 29:case 30:icon = 'wi wi-cloudy'; break;
-			case 31: case 33:			  icon = 'wi wi-night-clear'; break;
-			case 32: case 34:				icon = 'wi wi-day-sunny'; break;
+			case 31: case 33:			  			icon = 'wi wi-night-clear'; break;
+			case 32: case 34:						icon = 'wi wi-day-sunny'; break;
 			case 35: 								icon = 'wi wi-hail'; break;
 			case 36: 								icon = 'wi wi-hot'; break;
-			case 37:case 38:case 39:icon = 'wi wi-thunderstorm'; break;
+			case 37:case 38:case 39:             	icon = 'wi wi-thunderstorm'; break;
 			case 40: 								icon = 'wi wi-showers'; break;	
-			case 41:case 42:case 43:icon = 'wi wi-snow'; break;
-			case 44:  							icon = 'wi wi-cloudy'; break;
+			case 41:case 42:case 43: 				icon = 'wi wi-snow'; break;
+			case 44:  								icon = 'wi wi-cloudy'; break;
 				
 			default:								icon = 'wi wi-na';
    		}				
 		return icon;
 	}	
 	function ApplyData(d){
-			// Location
+		
+		// Location
 		var $locspan = $('#location span'),
 			$ctbicon = $('#ctbicon'),
 			$ctb = $('#ctb'),
 		  	$icontempi = $('#icon-temp i'),
 			$icontempp = $('#icon-temp p');
-			
 		$locspan.text(d.location.city);
 		
 		// Central Info
 		let currentTemp = d.item.condition.temp;
 		let icon = WeatherIcon(d.item.condition.code);
 
-		if(SettingsArray[0] == 1)
+		if( SettingsArray[0] == 1 )
 		{
 			$ctbicon.text("°C");
 		}
@@ -122,7 +123,7 @@ $(document).ready(function(){
 			else
 			{
 				pressure = parseFloat(pressure * 0.02953).toFixed(2) + " in";
-				visib = parseFloat(visib / 1.60934 ).toFixed(2) + " mi";
+				visib = convertToMiles(visib) + " mi";
 			}
 			$hd.text(d.atmosphere.humidity + "%");
 			$pd.text(pressure);
@@ -145,12 +146,12 @@ $(document).ready(function(){
 			let sunrise = d.astronomy.sunrise.replace(" am","").split(":");
 			let sunset = d.astronomy.sunset.replace(" pm","").split(":");
 			
-			if(sunset[1].length < 2)
+			if( sunset[1].length < 2 )
 			{
 				sunset[1] = "0" + sunset[1];
 			}
 			
-			if(SettingsArray[0] == 1)
+			if( SettingsArray[0] == 1 )
 			{
 				$srd.text( sunrise[0] + ":" + sunrise[1] );
 				$ssd.text( (parseInt(sunset[0]) + 12) + ":" + sunset[1]) ;
@@ -180,43 +181,44 @@ $(document).ready(function(){
 		}
 		// Wind Conditions
 		var $wind = $('#wind'),
-				$windli = $('#windli'),
-				$sd	=	$('#sd'),
-				$cd	=	$('#cd'),
-				$dd	=	$('#dd'),
-				$directioni	=	$('#direction i');
+			$windli = $('#windli'),
+			$sd	=	$('#sd'),
+			$cd	=	$('#cd'),
+			$dd	=	$('#dd'),
+			$directioni	=	$('#direction i');
 		
-		if($wind.prop('checked') === true )
+		if( $wind.prop('checked') === true )
 		{
 			$windli.removeClass().addClass('aswshown');
 			let speedWind = d.wind.speed,
 				tempChillText = "",
 				tempChill = d.wind.chill;
 
-			if(SettingsArray[0] == 1)
+			if( SettingsArray[0] == 1 )
 			{
 				speedWind = d.wind.speed + " km/h";
 				tempChill += "°C";
 			}
 			else
 			{
-				speedWind = parseFloat(speedWind / 1.60934).toFixed(2) + " mph";
+				speedWind = convertToMiles(speedWind) + " mph";
 				tempChill = convertToF(tempChill); 
 			}
+
 			let iconWind = "wi ";
-			if(d.wind.direction >= 0 && d.wind.direction <= 90)
+			if 		( d.wind.direction >= 0 && d.wind.direction <= 90 )
 			{
 				iconWind += "wi-direction-right";
 			}
-			else if(d.wind.direction > 90 && d.wind.direction <= 180)
+			else if ( d.wind.direction > 90 && d.wind.direction <= 180 )
 			{
 				iconWind += "wi-direction-up";
 			}
-			else if(d.wind.direction > 180 && d.wind.direction <= 270)
+			else if ( d.wind.direction > 180 && d.wind.direction <= 270 )
 			{
 				iconWind += "wi-direction-left";
 			}
-			else if(d.wind.direction > 270 && d.wind.direction <= 360)
+			else if (d.wind.direction > 270 && d.wind.direction <= 360 )
 			{
 				iconWind += "wi-direction-down";
 			}
@@ -233,14 +235,14 @@ $(document).ready(function(){
 		
 		// 9 Days forecast
 		var $10days = $('.day10item');
-		for(var item = 0; item < $10days.length; item++)
+		for( var item = 0; item < $10days.length; item++ )
 		{
-			let CurrentDay = d.item.forecast[item+1].day;
-			let CurrentTemp = d.item.forecast[item+1].high;
-			let CurrentTempLow = d.item.forecast[item+1].low;
-			let CurrentIcon = WeatherIcon(d.item.forecast[item+1].code);
+			let CurrentDay = d.item.forecast[item + 1].day;
+			let CurrentTemp = d.item.forecast[item + 1].high;
+			let CurrentTempLow = d.item.forecast[item + 1].low;
+			let CurrentIcon = WeatherIcon(d.item.forecast[item + 1].code);
 			
-			if(SettingsArray[0] == 1)
+			if( SettingsArray[0] == 1 )
 			{
 				CurrentTemp += "°C";
 				CurrentTempLow += "°C";
@@ -260,7 +262,6 @@ $(document).ready(function(){
 		
   	$.getJSON(querie, function(data) {
   		LoadedData = data.query.results.channel;
-			//console.log(LoadedData);
 			if(LoadedData !== null)
 			{
 				//Apply data to elements
@@ -276,7 +277,7 @@ $(document).ready(function(){
 	function LoadLocalStorage(){
 		LocalSettings = localStorage.getItem('SavedData');
 		
-		if (LocalSettings === null)
+		if ( LocalSettings === null )
 		{
 			var Settings = '1,1,1,1,' + arrayThemes[randomTheme] + ',Bucharest';
 			SettingsArray = Settings.split(',');
@@ -292,9 +293,9 @@ $(document).ready(function(){
 	}
 	function LoadCheckboxSettings(){	
 		// General Settings
-		for(var i = 0; i < array_ID.length; i++)
+		for( var i = 0; i < array_ID.length; i++ )
 		{
-			if(SettingsArray[i] == '1')
+			if( SettingsArray[i] == '1' )
 			{
 				 $(array_ID[i]).prop('checked',true);
 			}
@@ -310,7 +311,7 @@ $(document).ready(function(){
 		$InfoMsgBx.find('h1').text(info[value][0]);
 		$InfoMsgBx.find('p').text(info[value][1]).removeClass('loading');
 
-		if(type === 0)
+		if( type === 0 )
 		{
 			$InfoMsgBx.append("<div id='ok-btn'>Ok</div>");
 		}
@@ -330,7 +331,7 @@ $(document).ready(function(){
 	}
 	function isValid(string) {
 		var char = '~`!#$%^&*+=[]\';,/{}|\":<>?@1234567890';
-		for (var i = 0; i < string.length; i++)
+		for ( var i = 0; i < string.length; i++ )
 		{
 			if ( char.indexOf(string.charAt(i)) != -1 )
 			{
@@ -341,7 +342,7 @@ $(document).ready(function(){
 	}
 	function checkBlank(string) {
 		var count = 0;
-		for (var i = 0; i < string.length; i++)
+		for ( var i = 0; i < string.length; i++ )
 		{
 			if( string[i] == " " )
 			{
@@ -375,6 +376,10 @@ $(document).ready(function(){
 	function convertToF(temp){
 		temp = (temp * 9/5 + 32).toFixed(0) + "°F";
 		return temp;
+	}
+	function convertToMiles(speed){
+		speed = parseFloat(speed / 1.60934).toFixed(2);
+		return speed;
 	}
 	// Update Checkbox
 	$('input[type=checkbox]').on('change',function(e)
@@ -552,6 +557,7 @@ $(document).ready(function(){
 			var indexbtn = $button.index();
 			currentSlide = indexbtn;
 		}	
+
 		$('.li_row').css('transform', 'translateX(-' + currentSlideX[currentSlide] + 'px)');
 		$('.currentday').removeClass('currentday');
 		$dotmenu.eq(currentSlide).addClass('currentday');
