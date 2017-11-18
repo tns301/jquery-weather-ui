@@ -1,6 +1,8 @@
 A Pen created at CodePen.io. You can find this one at https://codepen.io/tns301/details/yXLWjQ/ . 
 This Pen was featured on the frontpage at CodePen.io and UpLabs.com.
 
+![alt text](https://assets.materialup.com/uploads/9bc6c6d6-d21b-4ff7-832c-8d1dbebb6ab3/intro.gif)
+
 Hello,
 
 This is my Weather Application for freeCodeCamp Portfolio. The Default Location is set to London but you can change it in the settings menu! It was built with jQuery and the Weather API from Yahoo to retrieve the data in a JSON format.
