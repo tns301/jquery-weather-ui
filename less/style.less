@@ -3,6 +3,22 @@
 	padding: 0;
 }
 
+@green2:#71daa3;
+@purple2:#bf74c0;
+@blue2: #6eadfd;
+@turqoise2: #00d6bb;
+
+@green:linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
+@purple:linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+@blue:linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
+@turqoise:linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+
+@settings:#f2f2f2;
+@settings-content:#fff;
+@settings-info:#f9f9f9;
+@settings-color:#444;
+@settings-error: linear-gradient(to bottom, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
+
 body {
 	background: #fbfbfb;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -10,10 +26,10 @@ body {
 	-webkit-transition: background .75s;
 	transition: background .75s;
 	
-	&.green{background:#71daa3;#copyright,#forget{color:#fff;a{color:#fff;}}}
-	&.purple{background: #bf74c0;#copyright,#forget{color:#fff;a{color:#fff;}}}
-	&.blue{background:#6eadfd;#copyright,#forget{color:#fff;a{color:#fff;}}}
-	&.turqoise{background:#00d6bb;#copyright,#forget{color:#fff;a{color:#fff;}}}
+	&.green{background:@green2;#copyright,#forget{color:#fff;a{color:#fff;}}}
+	&.purple{background: @purple2;#copyright,#forget{color:#fff;a{color:#fff;}}}
+	&.blue{background:@blue2;#copyright,#forget{color:#fff;a{color:#fff;}}}
+	&.turqoise{background:@turqoise2;#copyright,#forget{color:#fff;a{color:#fff;}}}
 }
 .wrapper {
 	width: 100%; min-height: 840px;
@@ -21,7 +37,7 @@ body {
 	.align {
 		width: 100%; height: 100%;
 		margin: 0 auto;
-		padding: 25px 0;
+		padding: 40px 0;
 	}
 
 	.app {
@@ -30,25 +46,14 @@ body {
 		-webkit-transform:translate3d(0,0,0);
 		-webkit-perspective: 1000;
 		
-		width: 394px; min-height: 700px;
+		width: 394px; min-height: 716px;
 		margin: 0 auto;
-		
-		box-shadow: 0 14px 20px -5px rgba(0, 0, 0, 0.2);
+
     border-radius: 22px;
+		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 		
 		font-family: sans-serif;
 		overflow: hidden;
-		
-		@green:linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
-		@purple:linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
-		@blue:linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
-		@turqoise:linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
-		
-		@settings:#f2f2f2;
-		@settings-content:#fff;
-		@settings-info:#f9f9f9;
-		@settings-color:#444;
-		@settings-error: linear-gradient(to bottom, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
 		
 		#main {
 			position: absolute;
@@ -441,8 +446,8 @@ body {
 							
 							background: #ececec;
 							
-							-webkit-transition: background .20;
-							transition: background .20s;
+							-webkit-transition: background .25;
+							transition: background .25s;
 							
 							border-radius: 34px;
 							box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -553,7 +558,8 @@ body {
 					font-weight:bold;
 					font-family: sans-serif;
 					color:#fff;
-
+   			 	text-shadow: 0 0 1px rgba(0,0,0,.25);
+					
 					outline:none;
 					cursor:pointer;
 				}
@@ -578,7 +584,7 @@ body {
 				top: 0; right: 0;
 				
 				border-radius: 20px;
-				text-shadow: 0 0 1px rgba(0,0,0,.1);
+				text-shadow: 0 0 1px rgba(0,0,0,.25);
 				-webkit-transition: .6s; 
 				transition: .6s; 
 				
@@ -819,14 +825,14 @@ body {
 			&.poor-Mozilla{background:@settings};
 			#settings{
 				ul{li{input:checked + .slider{
-						background: #71daa3;
+						background: @green2;
 					}}}
 				#update-button,#save-button{
 					background: @green;
 				}
 			}
 			#info-msg{.msg-box{div{
-				color:#71daa3;
+				color: @green2;
 			}}}
 		}
 		#main.green > #central{background: @green;}
@@ -837,14 +843,14 @@ body {
 			&.poor-Mozilla{background:@settings};
 			#settings{
 				ul{li{input:checked + .slider{
-						background: #6eadfd;
+						background: @blue2;
 					}}}
 				#update-button,#save-button{
 					background: @blue;
 				}
 			}
 			#info-msg{.msg-box{div{
-				color:#6eadfd;
+				color: @blue2;
 			}}}
 		}
 		#main.blue > #central{background: @blue;}
@@ -854,14 +860,14 @@ body {
 			&.poor-Mozilla{background:@settings};
 			#settings{
 				ul{li{input:checked + .slider{
-						background: #bf74c0;
+						background: @purple2;
 					}}}
 				#update-button,#save-button{
 					background: @purple;
 				}
 			}
 			#info-msg{.msg-box{div{
-				color:#bf74c0;
+				color: @purple2;
 				}}}
 		}	
 		#main.purple > #central{background: @purple;}
@@ -872,14 +878,14 @@ body {
 			&.poor-Mozilla{background:@settings};
 			#settings{
 				ul{li{input:checked + .slider{
-						background:#00d6bb;
+						background: @turqoise2;
 					}}}
 				#update-button,#save-button{
 					background: @turqoise;
 				}
 			}
 			#info-msg{.msg-box{div{
-				color:#00d6bb;
+				color: @turqoise2;
 			}}}
 		}	
 		#main.turqoise > #central{background: @turqoise;}
@@ -888,49 +894,49 @@ body {
 
 @-moz-document url-prefix() { 
 	.wrapper{.app{ #main{ #settings{ ul{ li{ .slider{ .left{
-		top: 0px;
+		top: 1px;
 		i {
           transform: translate(1px, 2px);
 			&.c{transform: translate(-9px, 3px);}
 		}}}}}}}}}
   .wrapper{.app{ #main{ #settings{ ul{ li{ .slider{ .right{ 
 		i {
-			top: 0px;
+			top: 1px;
           transform: translate(-1px, 2px);
 			&.f{transform: translate(-12px, 3px);}
 		}}}}}}}}}
 }
 #copyright {
-	text-shadow:0 0 1px rgba(0,0,0,.15);
+	text-shadow:0 0 1px rgba(0,0,0,.12);
 	text-align: center;
 	font-size: 16px;
 	font-family: sans-serif;
-	color: #444;
+	color: #757575;
 	width: 250px;
 	margin: 30px auto 0 auto;
 		a {
 			text-decoration: none;
-			color: #444;
+			color: #5a5a5a;
 			transition: all ease-in-out 0.35s;
 	}
-		a:hover {color: lighten(#444,20%);
+		a:hover {color: lighten(#5a5a5a,20%);
 	}
 }
 #forget {
-	text-shadow:0 0 1px rgba(0,0,0,.15);
+	text-shadow:0 0 1px rgba(0,0,0,.12);
 	font-size: 16px;
-	color: #444;
+	color: #757575;
 	margin:25px auto 0 auto;
 	font-family:sans-serif;
 	width: 250px;
 	text-align: center;
 		a {
 			text-decoration: none;
-			color: #444;
+			color: #5a5a5a;
 			transition: all ease-in-out 0.35s;
 		}
 		a:hover {
-			color: lighten(#444,20%);
+			color: lighten(#5a5a5a,20%);
 		}
 	&.hide{transition: all ease-in-out 0.35s;opacity:0;}
 }
