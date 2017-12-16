@@ -40,17 +40,17 @@ $(document).ready(function(){
 	function WeatherIcon(d){
 		let icon = "";
 
-   		switch(parseInt(d)) {
+   		switch( parseInt(d) ) {
 			case 0: 								icon = 'wi wi-tornado'; break;
-			case 1: case 3: case 4: 				icon = 'wi-thunderstorm'; break;
+			case 1: case 3: case 4: icon = 'wi wi-thunderstorm'; break;
 			case 2: 								icon = 'wi wi-hurricane'; break;
 			case 5: 								icon = 'wi wi-rain-mix'; break;
-			case 6: case 7: 						icon = 'wi wi-sleet'; break;
-			case 8: case 9: 						icon = 'wi wi-raindrops'; break;
+			case 6: case 7: 				icon = 'wi wi-sleet'; break;
+			case 8: case 9: 				icon = 'wi wi-raindrops'; break;
 			case 10: 								icon = 'wi wi-sprinkle'; break;
-			case 11: case 12: 						icon = 'wi wi-showers'; break;
-			case 13: case 14: 						icon = 'wi wi-snowflake-cold'; break;
-			case 15: case 16: 						icon = 'wi wi-snow-wind'; break;
+			case 11: case 12: 			icon = 'wi wi-showers'; break;
+			case 13: case 14: 			icon = 'wi wi-snowflake-cold'; break;
+			case 15: case 16: 			icon = 'wi wi-snow-wind'; break;
 			case 17: 								icon = 'wi wi-hail'; break;
 			case 18: 								icon = 'wi wi-sleet'; break;
 			case 19: 								icon = 'wi wi-dust'; break;
@@ -61,27 +61,26 @@ $(document).ready(function(){
 			case 24: 								icon = 'wi wi-windy'; break;
 			case 25: 								icon = 'wi wi-thermometer-exterior'; break;
 			case 26:case 27:case 28:case 29:case 30:icon = 'wi wi-cloudy'; break;
-			case 31: case 33:			  			icon = 'wi wi-night-clear'; break;
-			case 32: case 34:						icon = 'wi wi-day-sunny'; break;
+			case 31: case 33:			  icon = 'wi wi-night-clear'; break;
+			case 32: case 34:				icon = 'wi wi-day-sunny'; break;
 			case 35: 								icon = 'wi wi-hail'; break;
 			case 36: 								icon = 'wi wi-hot'; break;
-			case 37:case 38:case 39:             	icon = 'wi wi-thunderstorm'; break;
+			case 37:case 38:case 39:icon = 'wi wi-thunderstorm'; break;
 			case 40: 								icon = 'wi wi-showers'; break;	
-			case 41:case 42:case 43: 				icon = 'wi wi-snow'; break;
-			case 44:  								icon = 'wi wi-cloudy'; break;
+			case 41:case 42:case 43:icon = 'wi wi-snow'; break;
+			case 44:  							icon = 'wi wi-cloudy'; break;
 				
 			default:								icon = 'wi wi-na';
    		}				
 		return icon;
 	}	
-	function ApplyData(d){
-		
+	function ApplyData(d){		
 		// Location
 		var $locspan = $('#location span'),
-			$ctbicon = $('#ctbicon'),
-			$ctb = $('#ctb'),
-		  	$icontempi = $('#icon-temp i'),
-			$icontempp = $('#icon-temp p');
+				$ctbicon = $('#ctbicon'),
+				$ctb = $('#ctb'),
+				$icontempi = $('#icon-temp i'),
+				$icontempp = $('#icon-temp p');
 		$locspan.text(d.location.city);
 		
 		// Central Info
@@ -103,10 +102,10 @@ $(document).ready(function(){
 		
 		//Atmospheric Conditions
 		var $atm = $('#atm'),
-			$atmli = $('#atmli'),
-			$hd = $('#hd'),
-			$pd = $('#pd'),
-			$vd = $('#vd');
+				$atmli = $('#atmli'),
+				$hd = $('#hd'),
+				$pd = $('#pd'),
+				$vd = $('#vd');
 		
 		if( $atm.prop('checked') === true )
 		{	
@@ -135,10 +134,10 @@ $(document).ready(function(){
 		}
 		//Sunrise/Sunset
 		var $sun =  $('#sun'),
-			$sunli = $('#sunli'),
-			$srd = $('#srd'),
-			$ssd = $('#ssd'),
-			$td = $('#td');
+				$sunli = $('#sunli'),
+				$srd = $('#srd'),
+				$ssd = $('#ssd'),
+				$td = $('#td');
 		
 		if( $sun.prop('checked') === true )
 		{
@@ -168,10 +167,14 @@ $(document).ready(function(){
 
 			if( sr < ss ){
 				minDif = ss - sr;
+				if ( minDif <= 9)
+				{
+					minDif = "0" + minDif;
+				}
 			}
 			else
 			{
-				minDif = (60 - sr) + ss;
+					minDif = (60 - sr) + ss;
 			}
 			$td.text(totalHours + ":" + minDif);
 		}
@@ -181,11 +184,11 @@ $(document).ready(function(){
 		}
 		// Wind Conditions
 		var $wind = $('#wind'),
-			$windli = $('#windli'),
-			$sd	=	$('#sd'),
-			$cd	=	$('#cd'),
-			$dd	=	$('#dd'),
-			$directioni	=	$('#direction i');
+				$windli = $('#windli'),
+				$sd	=	$('#sd'),
+				$cd	=	$('#cd'),
+				$dd	=	$('#dd'),
+				$directioni	=	$('#direction i');
 		
 		if( $wind.prop('checked') === true )
 		{
@@ -197,12 +200,12 @@ $(document).ready(function(){
 			if( SettingsArray[0] == 1 )
 			{
 				speedWind = d.wind.speed + " km/h";
-				tempChill += "°C";
+				tempChill = convertToC(tempChill);
 			}
 			else
 			{
 				speedWind = convertToMiles(speedWind) + " mph";
-				tempChill = convertToF(tempChill); 
+				tempChill += "°F"; 
 			}
 
 			let iconWind = "wi ";
@@ -274,23 +277,6 @@ $(document).ready(function(){
 		LocalSettings = SettingsArray.toString();
 		localStorage.setItem('SavedData', LocalSettings);
 	}
-	function LoadLocalStorage(){
-		LocalSettings = localStorage.getItem('SavedData');
-		
-		if ( LocalSettings === null )
-		{
-			var Settings = '1,1,1,1,' + arrayThemes[randomTheme] + ',Bucharest';
-			SettingsArray = Settings.split(',');
-
-			getWeather('London');
-			toLocalStorage();
-		}
-		else
-		{
-			SettingsArray = LocalSettings.split(',');
-			getWeather(SettingsArray[SettingsArray.length-1]);
-		}
-	}
 	function LoadCheckboxSettings(){	
 		// General Settings
 		for( var i = 0; i < array_ID.length; i++ )
@@ -303,6 +289,25 @@ $(document).ready(function(){
 		// Apply theme
 		$Main.addClass(SettingsArray[SettingsArray.length-2] + " poor-Mozilla");
 		$('span.' + SettingsArray[SettingsArray.length-2]).addClass('current');
+	}
+	function LoadLocalStorage(){
+		LocalSettings = localStorage.getItem('SavedData');
+		
+		if ( LocalSettings === null )
+		{
+			var Settings = '1,1,1,1,' + arrayThemes[randomTheme] + ',London';
+			SettingsArray = Settings.split(',');
+
+			getWeather('London');
+			toLocalStorage();
+		}
+		else
+		{
+			SettingsArray = LocalSettings.split(',');
+			getWeather(SettingsArray[SettingsArray.length-1]);
+		}
+		
+		LoadCheckboxSettings();
 	}
 	function UpdateErrorMsg(value,type){
 		$Info.addClass('show');
@@ -374,7 +379,11 @@ $(document).ready(function(){
 		}, 7500);
 	}
 	function convertToF(temp){
-		temp = (temp * 9/5 + 32).toFixed(0) + "°F";
+		temp = (temp * 9 / 5 + 32).toFixed(0) + "°F";
+		return temp;
+	}
+	function convertToC(temp){
+		temp = (( temp - 32 )/( 9 / 5 )).toFixed(0) + "°C";
 		return temp;
 	}
 	function convertToMiles(speed){
@@ -382,8 +391,7 @@ $(document).ready(function(){
 		return speed;
 	}
 	// Update Checkbox
-	$('input[type=checkbox]').on('change',function(e)
-	{
+	$('input[type=checkbox]').on('change',function(e){
 		let index = $( 'input[type=checkbox]' ).index(this);
 
 		if( $(this).prop('checked') )
@@ -566,7 +574,6 @@ $(document).ready(function(){
 	
 	LoadIntro();
 	LoadLocalStorage();
-	LoadCheckboxSettings();
 	
 	console.log("Hello there 😜");
 }); // End $(document).ready
