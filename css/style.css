@@ -70,7 +70,8 @@ body.turqoise #forget a {
   min-height: 716px;
   margin: 0 auto;
   border-radius: 22px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   font-family: sans-serif;
   overflow: hidden;
 }
@@ -229,8 +230,9 @@ body.turqoise #forget a {
           transform: scale(0);
   margin: 0 auto;
   border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.97)), to(rgba(245, 245, 245, 0.97)));
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.97) 0%, rgba(245, 245, 245, 0.97) 100%);
   text-align: center;
   -webkit-transition: .5s;
@@ -239,69 +241,88 @@ body.turqoise #forget a {
 .wrapper .app #main #info-msg .msg-box .loader {
   color: #444;
   font-size: 10px;
-  margin: -30px auto;
+  margin: -5px auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  -webkit-animation: load1 1.3s infinite linear;
-  animation: load1 1.3s infinite linear;
+  -webkit-animation: load1 1s infinite linear;
+  animation: load1 1s infinite linear;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+.wrapper .app #main #info-msg .msg-box.hide {
+  opacity: 0;
 }
 @-webkit-keyframes load1 {
   0%,
   100% {
-    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    -webkit-box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+            box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
   }
   12.5% {
-    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   25% {
-    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   37.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   50% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   62.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
   }
   75% {
-    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    -webkit-box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+            box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
   }
   87.5% {
-    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    -webkit-box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+            box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
 }
 @keyframes load1 {
   0%,
   100% {
-    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    -webkit-box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+            box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
   }
   12.5% {
-    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   25% {
-    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   37.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   50% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   62.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    -webkit-box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+            box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
   }
   75% {
-    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    -webkit-box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+            box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
   }
   87.5% {
-    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    -webkit-box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+            box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
 }
 .wrapper .app #main #info-msg .msg-box.open {
@@ -360,33 +381,41 @@ body.turqoise #forget a {
 .wrapper .app #main #info-msg .msg-box h1 {
   color: #444;
   font-size: 20px;
-  width: 80%;
-  height: 19px;
-  line-height: 20px;
+  width: 92%;
+  height: auto;
+  line-height: 23px;
   margin: 20px auto 0 auto;
 }
 .wrapper .app #main #info-msg .msg-box p {
   color: #444;
-  line-height: 60px;
   font-size: 14px;
-  width: 80%;
-  min-height: 60px;
-  margin: 10px auto 10px auto;
+  width: 87%;
+  min-height: 30px;
+  line-height: 30px;
+  margin: 5px auto 10px auto;
+  -webkit-transition: .25s;
+  transition: .25s;
 }
-.wrapper .app #main #info-msg .msg-box p.loading {
-  line-height: 90px;
+.wrapper .app #main #info-msg .msg-box p.load {
+  margin-top: 40px;
+}
+.wrapper .app #main #info-msg .msg-box p.show {
+  opacity: 1;
+}
+.wrapper .app #main #info-msg .msg-box p.hide {
+  opacity: 0;
 }
 .wrapper .app #main #info-msg .msg-box #ok-btn {
-  position: relative;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 40px;
-  left: 0;
-  bottom: 0;
   line-height: 40px;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   border-top: solid 1px rgba(0, 0, 0, 0.15);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -425,7 +454,8 @@ body.turqoise #forget a {
 .wrapper .app #main #settings #settings-info {
   height: 52px;
   line-height: 52px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   background: #f9f9f9;
   border-top-left-radius: 20px;
   text-align: left;
@@ -442,7 +472,6 @@ body.turqoise #forget a {
   margin: 10px auto 0 auto;
 }
 .wrapper .app #main #settings ul li {
-  position: relative;
   width: 100%;
   height: auto;
   margin: 10px auto;
@@ -453,7 +482,6 @@ body.turqoise #forget a {
           transform: translateX(75px);
 }
 .wrapper .app #main #settings ul li .text {
-  position: relative;
   width: 100%;
   min-height: 40px;
   line-height: 40px;
@@ -463,7 +491,8 @@ body.turqoise #forget a {
   text-indent: 12px;
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
 }
 .wrapper .app #main #settings ul li .text .row {
   width: 100%;
@@ -480,19 +509,15 @@ body.turqoise #forget a {
   transition: .20s;
 }
 .wrapper .app #main #settings ul li .text .row span.green {
-  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
   background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.blue {
-  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
   background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.turqoise {
-  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
   background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.purple {
-  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
   background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.green.current,
@@ -521,7 +546,6 @@ body.turqoise #forget a {
           transform: scale(0.9);
 }
 .wrapper .app #main #settings ul li .sub-info {
-  position: relative;
   width: 90%;
   height: 20px;
   line-height: 20px;
@@ -559,7 +583,8 @@ body.turqoise #forget a {
   -webkit-transition: background .25s;
   transition: background .25s;
   border-radius: 34px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 .wrapper .app #main #settings ul li .slider span {
   -webkit-transform: translate(-6px, -6px);
@@ -620,7 +645,8 @@ body.turqoise #forget a {
   -webkit-transition: .20;
   transition: .20;
   border-radius: 50%;
-  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
   z-index: 2;
 }
 .wrapper .app #main #settings ul li input:checked + .slider:before {
@@ -653,7 +679,8 @@ body.turqoise #forget a {
   height: 35px;
   margin: 0 auto;
   float: left;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
   border: none;
   border-radius: 15px;
   background: #fff;
@@ -735,7 +762,8 @@ body.turqoise #forget a {
 .wrapper .app #main #settings #update-button:active,
 .wrapper .app #main #settings #save-button:active {
   opacity: 1;
-  box-shadow: inset 0 1px 7px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 1px 7px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 1px 7px rgba(0, 0, 0, 0.25);
   line-height: 37px;
 }
 .wrapper .app #main #settings.show + #central {
@@ -761,7 +789,6 @@ body.turqoise #forget a {
   margin-top: 1px;
 }
 .wrapper .app #main #central #top-menu-info #location {
-  position: relative;
   font-size: 27px;
   text-align: center;
   line-height: 50px;
@@ -785,7 +812,6 @@ body.turqoise #forget a {
   transition: 0.75s ease-in-out;
 }
 .wrapper .app #main #central #temp-div #icon-temp {
-  position: relative;
   margin: 0 auto;
   width: 100%;
   text-align: Center;
@@ -799,10 +825,9 @@ body.turqoise #forget a {
 .wrapper .app #main #central #temp-div #icon-temp p {
   display: inline-block;
   font-size: 30px;
-  max-width: 200px;
+  max-width: 210px;
 }
 .wrapper .app #main #central #temp-div #current-temp-big {
-  position: relative;
   display: inline-block;
   width: 100%;
   text-align: center;
@@ -875,7 +900,8 @@ body.turqoise #forget a {
   margin: 0px auto;
   color: #fff;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.15);
 }
 .wrapper .app #main #central #weather-menu ul li.aswshow {
@@ -1018,7 +1044,6 @@ body.turqoise #forget a {
   cursor: pointer;
 }
 .wrapper .app #central.green {
-  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
   background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
 }
 .wrapper .app #main.green.poor-Mozilla {
@@ -1029,18 +1054,15 @@ body.turqoise #forget a {
 }
 .wrapper .app #main.green #settings #update-button,
 .wrapper .app #main.green #settings #save-button {
-  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
   background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
 }
 .wrapper .app #main.green #info-msg .msg-box div {
   color: #71daa3;
 }
 .wrapper .app #main.green > #central {
-  background: -webkit-linear-gradient(315deg, #c9ef87 -20%, #22ccb7 120%);
   background: linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
 }
 .wrapper .app #central.blue {
-  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
   background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
 }
 .wrapper .app #main.blue.poor-Mozilla {
@@ -1051,14 +1073,12 @@ body.turqoise #forget a {
 }
 .wrapper .app #main.blue #settings #update-button,
 .wrapper .app #main.blue #settings #save-button {
-  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
   background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
 }
 .wrapper .app #main.blue #info-msg .msg-box div {
   color: #6eadfd;
 }
 .wrapper .app #main.blue > #central {
-  background: -webkit-linear-gradient(315deg, #80ecf7 -20%, #706aff 120%);
   background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
 }
 .wrapper .app #main.purple.poor-Mozilla {
@@ -1069,18 +1089,15 @@ body.turqoise #forget a {
 }
 .wrapper .app #main.purple #settings #update-button,
 .wrapper .app #main.purple #settings #save-button {
-  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
   background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
 }
 .wrapper .app #main.purple #info-msg .msg-box div {
   color: #bf74c0;
 }
 .wrapper .app #main.purple > #central {
-  background: -webkit-linear-gradient(315deg, #fd82cc -20%, #704aa2 120%);
   background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
 }
 .wrapper .app #central.turqoise {
-  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
   background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
 }
 .wrapper .app #main.turqoise.poor-Mozilla {
@@ -1091,14 +1108,12 @@ body.turqoise #forget a {
 }
 .wrapper .app #main.turqoise #settings #update-button,
 .wrapper .app #main.turqoise #settings #save-button {
-  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
   background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
 }
 .wrapper .app #main.turqoise #info-msg .msg-box div {
   color: #00d6bb;
 }
 .wrapper .app #main.turqoise > #central {
-  background: -webkit-linear-gradient(315deg, #5de2ff -20%, #1ccc88 120%);
   background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
 }
 @-moz-document url-prefix() {
