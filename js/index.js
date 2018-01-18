@@ -219,7 +219,7 @@ $(document).ready(function(){
 					$ssd.text(sunset[0]+ ":" + sunset[1] + " pm");
 				}
 
-				let totalHours = (Math.floor(sunset[0]) + 12) - parseInt(sunrise[0]);
+				let totalHours = (Math.floor(sunset[0]) + 12) - Math.floor(sunrise[0]);
 				let minDif,
 						sr = Math.floor(sunrise[1]), // Store the minutes for sunrise
 						ss = Math.floor(sunset[1]);  // Store the minutes for sunset
@@ -272,22 +272,22 @@ $(document).ready(function(){
 					tempChill += "°F"; 
 				}
 
-				let iconWind = "wi ";
+				let iconWind = "";
 				if (d.wind.direction >= 0 && d.wind.direction <= 90)
 				{
-					iconWind += "wi-direction-right";
+					iconWind = "wi wi-direction-right";
 				}
 				else if (d.wind.direction > 90 && d.wind.direction <= 180)
 				{
-					iconWind += "wi-direction-up";
+					iconWind += "wi wi-direction-up";
 				}
 				else if (d.wind.direction > 180 && d.wind.direction <= 270)
 				{
-					iconWind += "wi-direction-left";
+					iconWind += "wi wi-direction-left";
 				}
 				else if (d.wind.direction > 270 && d.wind.direction <= 360)
 				{
-					iconWind += "wi-direction-down";
+					iconWind += "wi wi-direction-down";
 				}
 
 				$sd.text(speedWind);
@@ -371,7 +371,7 @@ $(document).ready(function(){
 	
 	// --------- Start Function Buttons -----------
 		// Update Checkbox
-			$('input[type=checkbox]').on('change',function(e){
+		$('input[type=checkbox]').on('change',function(e){
 			let index = $( 'input[type=checkbox]' ).index(this);
 
 			if ($(this).prop('checked'))
@@ -385,7 +385,7 @@ $(document).ready(function(){
 		});
 
 		// Open Settings Menu
-			$('#main').on('click','#btn-right, #weather-menu-btn',function(e){
+		$('#main').on('click','#btn-right, #weather-menu-btn',function(e){
 			e.preventDefault();
 			var $CurrentButton = $(this);
 
@@ -450,7 +450,7 @@ $(document).ready(function(){
 		});
 
 		// Error Button
-			$('#info-msg').on('click','#ok-btn',function(e){
+		$('#info-msg').on('click','#ok-btn',function(e){
 			if ($Info.hasClass('show'))
 			{
 				$Info.removeClass('show');
@@ -461,7 +461,7 @@ $(document).ready(function(){
 				}, 1000);
 			}
 		});	
-			function UpdateErrorMsg(value, type){
+		function UpdateErrorMsg(value, type){
 			$Info.addClass('show');
 			$InfoMsgBx.addClass('open');
 
@@ -494,7 +494,7 @@ $(document).ready(function(){
 		// End Error Button
 
 		// Change Theme
-			$('.row').on('click','span',function(e){
+		$('.row').on('click','span',function(e){
 			var new_theme = $(this).attr('class').split(' ');
 			if (new_theme[1] != 'current')
 			{
