@@ -20,7 +20,7 @@ body.green #forget a {
   color: #fff;
 }
 body.purple {
-  background: #bf74c0;
+  background: #b557b7;
 }
 body.purple #copyright,
 body.purple #forget {
@@ -42,7 +42,7 @@ body.blue #forget a {
   color: #fff;
 }
 body.turqoise {
-  background: #00d6bb;
+  background: #31cec2;
 }
 body.turqoise #copyright,
 body.turqoise #forget {
@@ -99,7 +99,7 @@ body.turqoise #forget a {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #fff2c2;
+  background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,6 +228,7 @@ body.turqoise #forget a {
   right: 0;
   -webkit-transform: scale(0);
           transform: scale(0);
+  opacity: 0;
   margin: 0 auto;
   border-radius: 12px;
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -380,7 +381,7 @@ body.turqoise #forget a {
 }
 .wrapper .app #main #info-msg .msg-box h1 {
   color: #444;
-  font-size: 20px;
+  font-size: 18px;
   width: 92%;
   height: auto;
   line-height: 23px;
@@ -392,7 +393,7 @@ body.turqoise #forget a {
   width: 87%;
   min-height: 30px;
   line-height: 30px;
-  margin: 5px auto 10px auto;
+  margin: 13px auto 10px auto;
   -webkit-transition: .25s;
   transition: .25s;
 }
@@ -515,10 +516,10 @@ body.turqoise #forget a {
   background: linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.turqoise {
-  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #08bb8a 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.purple {
-  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #f572c1 -20%, #6a37ab 120%);
 }
 .wrapper .app #main #settings ul li .text .row span.green.current,
 .wrapper .app #main #settings ul li .text .row span.blue.current,
@@ -843,8 +844,8 @@ body.turqoise #forget a {
   vertical-align: unset;
 }
 .wrapper .app #main #central #temp-div.weather-menu-show {
-  transform: translate(-80px, -320px) scale(0.7);
-  -webkit-transform: translate(-80px, -320px) scale(0.7);
+  -webkit-transform: translate(-80px, -320px) scale(0.75);
+          transform: translate(-80px, -320px) scale(0.75);
 }
 .wrapper .app #main #central #weather-menu {
   position: absolute;
@@ -856,7 +857,7 @@ body.turqoise #forget a {
   -webkit-transition: all 0.75s ease-in-out;
   transition: all 0.75s ease-in-out;
   -webkit-transform: translateY(100%);
-  transform: translateY(100%);
+          transform: translateY(100%);
   -webkit-backface-visibility: hidden;
 }
 .wrapper .app #main #central #weather-menu.show {
@@ -911,10 +912,10 @@ body.turqoise #forget a {
   display: none;
 }
 .wrapper .app #main #central #weather-menu ul li .day_left {
-  left: -5px;
+  left: 0px;
 }
 .wrapper .app #main #central #weather-menu ul li .day_right {
-  right: -5px;
+  right: 0px;
 }
 .wrapper .app #main #central #weather-menu ul li .day_left,
 .wrapper .app #main #central #weather-menu ul li .day_right {
@@ -1009,17 +1010,17 @@ body.turqoise #forget a {
 }
 .wrapper .app #main #central #weather-menu ul li #dotmenu span {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   background: #fff;
   border-radius: 20px;
   margin-left: 2px;
-  -webkit-transition: .25s;
-  transition: .25s;
+  -webkit-transition: .20s;
+  transition: .20s;
 }
 .wrapper .app #main #central #weather-menu ul li #dotmenu span.currentday {
-  -webkit-transform: scale(1.6);
-          transform: scale(1.6);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 .wrapper .app #main #central #weather-menu ul li #dotmenu span:hover {
   cursor: pointer;
@@ -1085,36 +1086,36 @@ body.turqoise #forget a {
   background: #f2f2f2;
 }
 .wrapper .app #main.purple #settings ul li input:checked + .slider {
-  background: #bf74c0;
+  background: #b557b7;
 }
 .wrapper .app #main.purple #settings #update-button,
 .wrapper .app #main.purple #settings #save-button {
-  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #f572c1 -20%, #6a37ab 120%);
 }
 .wrapper .app #main.purple #info-msg .msg-box div {
-  color: #bf74c0;
+  color: #b557b7;
 }
 .wrapper .app #main.purple > #central {
-  background: linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+  background: linear-gradient(135deg, #f572c1 -20%, #6a37ab 120%);
 }
 .wrapper .app #central.turqoise {
-  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #08bb8a 120%);
 }
 .wrapper .app #main.turqoise.poor-Mozilla {
   background: #f2f2f2;
 }
 .wrapper .app #main.turqoise #settings ul li input:checked + .slider {
-  background: #00d6bb;
+  background: #31cec2;
 }
 .wrapper .app #main.turqoise #settings #update-button,
 .wrapper .app #main.turqoise #settings #save-button {
-  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #08bb8a 120%);
 }
 .wrapper .app #main.turqoise #info-msg .msg-box div {
-  color: #00d6bb;
+  color: #31cec2;
 }
 .wrapper .app #main.turqoise > #central {
-  background: linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+  background: linear-gradient(135deg, #5de2ff -20%, #08bb8a 120%);
 }
 @-moz-document url-prefix() {
   .wrapper .app #main #settings ul li .slider .left {
@@ -1156,7 +1157,7 @@ body.turqoise #forget a {
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.12);
   font-size: 16px;
   color: #757575;
-  margin: 25px auto 0 auto;
+  margin: 10px auto 25px auto;
   font-family: sans-serif;
   width: 250px;
   text-align: center;

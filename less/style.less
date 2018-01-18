@@ -4,14 +4,14 @@
 }
 
 @green2:#71daa3;
-@purple2:#bf74c0;
+@purple2:#b557b7;
 @blue2: #6eadfd;
-@turqoise2: #00d6bb;
+@turqoise2: #31cec2;
 
 @green:linear-gradient(135deg, #c9ef87 -20%, #22ccb7 120%);
-@purple:linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+@purple:linear-gradient(135deg, #f572c1 -20%, #6a37ab 120%);
 @blue:linear-gradient(135deg, #80ecf7 -20%, #706aff 120%);
-@turqoise:linear-gradient(135deg, #5de2ff -20%, #1ccc88 120%);
+@turqoise:linear-gradient(135deg, #5de2ff -20%, #08bb8a 120%);
 
 @settings:#f2f2f2;
 @settings-content:#fff;
@@ -79,7 +79,7 @@ body {
 				
 				position: absolute;
 				width:100%; height: 100%;
-				background:#fff2c2;
+				background:#fff;
 				
 				// vertical center;
 				display: flex;
@@ -185,6 +185,7 @@ body {
 					
 					left:0;right:0;
 					transform:scale(0);
+					opacity:0;
 					margin: 0 auto;
 					
 					border-radius:12px;
@@ -293,8 +294,8 @@ body {
 						}
 					}
 					
-					h1{color:@settings-color;font-size:20px;width:92%;height:auto;line-height: 23px;margin:20px auto 0 auto;}
-					p{color:@settings-color;font-size:14px;width:87%;min-height:30px;line-height: 30px;margin:5px auto 10px auto;transition: .25s; 
+					h1{color:@settings-color;font-size:18px;width:92%;height:auto;line-height: 23px;margin:20px auto 0 auto;}
+					p{color:@settings-color;font-size:14px;width:87%;min-height:30px;line-height: 30px;margin:13px auto 10px auto;transition: .25s; 
 						&.load{
 							margin-top:40px;
 						}
@@ -657,8 +658,7 @@ body {
 						}
 				}
 				#temp-div.weather-menu-show{
-					transform:translate(-80px,-320px) scale(0.70);
-					-webkit-transform:translate(-80px,-320px) scale(0.70);
+					transform:translate(-80px,-320px) scale(0.75);
 				}
 				#weather-menu{
 					position: absolute;
@@ -667,9 +667,7 @@ body {
 					
 					color:#fff;
 
-					-webkit-transition: all .75s ease-in-out;
 					transition: all .75s ease-in-out;
-					-webkit-transform: translateY(100%);
 					transform: translateY(100%);
 
 					-webkit-backface-visibility: hidden;
@@ -718,10 +716,10 @@ body {
 							}
 							
 							.day_left{
-								left:-5px;
+								left:0px;
 							}
 							.day_right{
-								right:-5px;
+								right:0px;
 							}
 							.day_left,.day_right{
 								position:absolute;
@@ -781,15 +779,15 @@ body {
 								z-index:1000;
 								span{
 									display: inline-block;
-									width: 8px; height: 8px;
+									width: 9px; height: 9px;
 									background: #fff;
 									border-radius: 20px;
 									margin-left:2px;
 									
-									-webkit-transition: .25s;
-									transition: .25s;
+									-webkit-transition: .20s;
+									transition: .20s;
 									&.currentday{
-										transform: scale(1.6);
+										transform: scale(1.5);
 									}
 								}
 								span:hover{
@@ -928,7 +926,7 @@ body {
 	text-shadow:0 0 1px rgba(0,0,0,.12);
 	font-size: 16px;
 	color: #757575;
-	margin:25px auto 0 auto;
+	margin:10px auto 25px auto;
 	font-family:sans-serif;
 	width: 250px;
 	text-align: center;
