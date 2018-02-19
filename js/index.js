@@ -7,20 +7,22 @@ $(document).ready(function(){
 			$Central = $('#central'),
 			$Info = $('#info-msg'),
 			$InfoMsgBx = $('#info-msg .msg-box'),
+			$InfoMsgBxP = $('#info-msg .msg-box p'),
+			$InfoMsgBxH1 = $('#info-msg .msg-box h1'),
 			$DotMenu = $('#dotmenu span'),
 			$tempDiv = $('#temp-div');
 	
 	var arrayThemes = ['green','turqoise','blue','purple'],
 			randomTheme = Math.floor(Math.random() * 4),
 			array_ID = ['#unit','#atm','#sun','#wind'],
-			settingsList = $('#settings ul li, .search-container'),
+			SettingsListLi = $('#settings ul li, .search-container'),
 			SettingsArray = [],
 			info = {
 				"Char":[
-					"Invalid Characters!","Please use only letters! (aA-zZ)"
+					"Invalid Characters! 😡","Please use only letters! (aA-zZ) "
 				],
 				"Loc":[
-					"Invalid Location","Please update your location!"
+					"Invalid Location 📍","Please update your location!"
 				],
 				"Loading":[
 					"Searching for location...","Location found!"
@@ -29,7 +31,10 @@ $(document).ready(function(){
 					"Saving, Please wait...","Save Complete!"
 				],
 				"GetDataError":[
-					"Huston, we have a problem 🚀🌑","This city does not actually exist!"
+					"Huston, we have a problem 🚀🌑","This city doesn't exist!"
+				],
+				"NotEnoughCharacters":[
+					"🏙️ Name is too short!","Please enter at least 4 letters"
 				]
 			};
 	
@@ -95,7 +100,7 @@ $(document).ready(function(){
 		function WeatherIcon(d){
 			let icon = "";
 
-				switch( Math.floor(d) ) {
+				switch(Math.floor(d)) {
 				case 0: 								icon = 'wi wi-tornado'; break;
 				case 1: case 3: case 4: icon = 'wi wi-thunderstorm'; break;
 				case 2: 								icon = 'wi wi-hurricane'; break;
@@ -129,39 +134,63 @@ $(document).ready(function(){
 				}				
 			return icon;
 		}
+		// Location
+		var $locspan = $('#location span'),
+				$datespan = $('#date span'),
+				$ctbicon = $("#ctbicon"),
+				$ctb = $("#ctb"),
+				$icontempi = $('#icon-temp i'),
+				$icontempp = $('#icon-temp p');
+		//Atmospheric Conditions
+		var $atm = $('#atm'),
+				$atmli = $('#atmli'),
+				$hd = $('#hd'),
+				$pd = $('#pd'),
+				$vd = $('#vd');
+		//Sunrise/Sunset
+		var $sun =  $('#sun'),
+				$sunli = $('#sunli'),
+				$srd = $('#srd'),
+				$ssd = $('#ssd'),
+				$td = $('#td');
+		// Wind Conditions
+		var $wind = $('#wind'),
+				$windli = $('#windli'),
+				$sd	=	$('#sd'),
+				$cd	=	$('#cd'),
+				$dd	=	$('#dd'),
+				$directioni	=	$('#direction i');
+		var $10days = $('.day10item');
+	
 		function ApplyData(d){
-			// Location
-			var $locspan = $('#location span'),
-					$ctbicon = $('#ctbicon'),
-					$ctb = $('#ctb'),
-					$icontempi = $('#icon-temp i'),
-					$icontempp = $('#icon-temp p');
-			
+			//Location
 			$locspan.text(d.location.city);
+			
+			let datespan = d.item.pubDate.split(" "), datespantext = "";
+			for ( var date_i = 0; date_i < datespan.length - 3; date_i++ ){
+				datespantext += " ";
+				datespantext += datespan[date_i];
+			}
+			$datespan.text(datespantext);
+			
 			// Central Info
 			let currentTemp = d.item.condition.temp;
 			let icon = WeatherIcon(d.item.condition.code);
 
 			if (SettingsArray[0] == 1)
 			{
-				$ctbicon.text("°C");
+				$ctbicon.text(" ºC");
 			}
 			else
 			{
-				$ctbicon.text("°F");
-				currentTemp = (convertToF(currentTemp)).replace("°F",""); 
+				$ctbicon.text(" ºF");
+				currentTemp = (convertToF(currentTemp)).replace(" ºF",""); 
 			}
 			$ctb.text(currentTemp);
 			$icontempi.removeClass().addClass(icon);
 			$icontempp.text(d.item.condition.text);
-
-			//Atmospheric Conditions
-			var $atm = $('#atm'),
-					$atmli = $('#atmli'),
-					$hd = $('#hd'),
-					$pd = $('#pd'),
-					$vd = $('#vd');
-
+			
+			// Atmospheric
 			if ($atm.prop('checked') === true)
 			{	
 				$atmli.removeClass().addClass('aswshown');
@@ -187,13 +216,8 @@ $(document).ready(function(){
 			{
 				$atmli.removeClass().addClass('aswhidden');
 			}
-			//Sunrise/Sunset
-			var $sun =  $('#sun'),
-					$sunli = $('#sunli'),
-					$srd = $('#srd'),
-					$ssd = $('#ssd'),
-					$td = $('#td');
-
+			
+			// Sunrise/Sunset
 			if ($sun.prop('checked') === true)
 			{
 				$sunli.removeClass().addClass('aswshown');
@@ -219,7 +243,7 @@ $(document).ready(function(){
 					$ssd.text(sunset[0]+ ":" + sunset[1] + " pm");
 				}
 
-				let totalHours = (Math.floor(sunset[0]) + 12) - Math.floor(sunrise[0]);
+				let totalHours = (Math.floor(sunset[0]) + 12) - parseInt(sunrise[0]);
 				let minDif,
 						sr = Math.floor(sunrise[1]), // Store the minutes for sunrise
 						ss = Math.floor(sunset[1]);  // Store the minutes for sunset
@@ -246,14 +270,8 @@ $(document).ready(function(){
 			{
 				$sunli.removeClass().addClass('aswhidden');
 			}
-			// Wind Conditions
-			var $wind = $('#wind'),
-					$windli = $('#windli'),
-					$sd	=	$('#sd'),
-					$cd	=	$('#cd'),
-					$dd	=	$('#dd'),
-					$directioni	=	$('#direction i');
-
+			
+			// Wind
 			if ($wind.prop('checked') === true)
 			{
 				$windli.removeClass().addClass('aswshown');
@@ -269,31 +287,31 @@ $(document).ready(function(){
 				else
 				{
 					speedWind = convertToMiles(speedWind) + " mph";
-					tempChill += "°F"; 
+					tempChill += " ºF"; 
 				}
 
 				let iconWind = "";
 				if (d.wind.direction >= 0 && d.wind.direction <= 90)
 				{
-					iconWind = "wi wi-direction-right";
+					iconWind = "fa fa-long-arrow-right";
 				}
 				else if (d.wind.direction > 90 && d.wind.direction <= 180)
 				{
-					iconWind += "wi wi-direction-up";
+					iconWind = "fa fa-long-arrow-up";
 				}
 				else if (d.wind.direction > 180 && d.wind.direction <= 270)
 				{
-					iconWind += "wi wi-direction-left";
+					iconWind = "fa fa-long-arrow-left";
 				}
 				else if (d.wind.direction > 270 && d.wind.direction <= 360)
 				{
-					iconWind += "wi wi-direction-down";
+					iconWind = "fa fa-long-arrow-down";
 				}
 
 				$sd.text(speedWind);
 				$cd.text(tempChill);
 				$directioni.removeClass().addClass(iconWind);
-				$dd.text(d.wind.direction + "°");
+				$dd.text(d.wind.direction + " º");
 			}
 			else
 			{
@@ -301,7 +319,6 @@ $(document).ready(function(){
 			}
 
 			// 9 Days forecast
-			var $10days = $('.day10item');
 			for (var item = 0; item < $10days.length; item++)
 			{
 				let CurrentDay = d.item.forecast[item + 1].day;
@@ -311,8 +328,8 @@ $(document).ready(function(){
 
 				if (SettingsArray[0] == 1)
 				{
-					CurrentTemp += "°C";
-					CurrentTempLow += "°C";
+					CurrentTemp += " ºC";
+					CurrentTempLow += " ºC";
 				}
 				else
 				{
@@ -321,7 +338,7 @@ $(document).ready(function(){
 				}
 
 				$($10days[item]).find('i').removeClass().addClass(CurrentIcon);
-				$($10days[item]).find('span').html(CurrentDay + "</br>" + CurrentTemp + " | " + CurrentTempLow);
+				$($10days[item]).find('span').html(CurrentDay + "</br><i>" + CurrentTemp + " <strong>/</strong> " + CurrentTempLow + "</i>");
 			}
 		}
 		function LoadCheckboxSettings(){	
@@ -357,11 +374,11 @@ $(document).ready(function(){
 			}, 7500);
 		}
 		function convertToF(temp){
-			temp = Math.round(temp * 9 / 5 + 32) + "°F";
+			temp = Math.round(temp * 9 / 5 + 32) + " ºF";
 			return temp;
 		}
 		function convertToC(temp){
-			temp = Math.round((temp - 32)/(9 / 5)) + "°C";
+			temp = Math.round((temp - 32)/(9 / 5)) + " ºC";
 			return temp;
 		}
 		function convertToMiles(speed){
@@ -402,12 +419,10 @@ $(document).ready(function(){
 					$Main.removeClass('poor-Mozilla');
 
 					$('body').addClass(SettingsArray[4]);
-					$(settingsList).each(function(j)
-					{
-						setTimeout(function () {
-							$(settingsList[j]).addClass('slideAnimation'); 
-						}, 35 * j);
-					});
+					
+					for (var ii = 0; ii < SettingsListLi.length; ii++){
+						AnimiateLiMenu(ii, SettingsListLi[ii], 0);
+					}
 
 					setTimeout(function()
 					{
@@ -426,9 +441,9 @@ $(document).ready(function(){
 					setTimeout(function()
 					{
 						$rightButton.prop('disabled', false);
-							$(settingsList).each(function(j){
-								$(this).removeClass('slideAnimation'); 
-							});
+						for (var ii = 0; ii < SettingsListLi.length; ii++){
+							AnimiateLiMenu(ii, SettingsListLi[ii], 1);
+						}
 						$Main.addClass('poor-Mozilla');
 					}, 595);
 				}
@@ -447,6 +462,18 @@ $(document).ready(function(){
 				}
 			}
 
+			function AnimiateLiMenu(Step, currentLi, AddRemove) {
+				if (AddRemove === 0){
+					setTimeout(function() {
+						$(currentLi).addClass('slideAnimation'); 
+					}, Step * 35);
+				}
+				else{
+					$(currentLi).removeClass('slideAnimation');
+				}
+				
+			}
+			
 		});
 
 		// Error Button
@@ -463,10 +490,10 @@ $(document).ready(function(){
 		});	
 		function UpdateErrorMsg(value, type){
 			$Info.addClass('show');
+			
 			$InfoMsgBx.addClass('open');
-
-			$InfoMsgBx.find('h1').text(info[value][0]);
-			$InfoMsgBx.find('p').text(info[value][1]);
+			$InfoMsgBxH1.text(info[value][0]);
+			$InfoMsgBxP.text(info[value][1]);
 
 			if (type === 0)
 			{
@@ -475,17 +502,17 @@ $(document).ready(function(){
 			else
 			{
 				$InfoMsgBx.append("<div class='loader'></div>");
-				$InfoMsgBx.find('p').addClass('hide');
+				$InfoMsgBxP.addClass('hide');
 
 				setTimeout(function(){	
 					$InfoMsgBx.find('.loader').addClass('hide').remove();
-					$InfoMsgBx.find('p').removeClass('hide').addClass('show, load');
+					$InfoMsgBxP.removeClass('hide').addClass('show, load');
 
 					setTimeout(function(){
 							$Info.removeClass('show');
 							$InfoMsgBx.removeClass('open');
 							setTimeout(function(){
-							 $InfoMsgBx.find('p').removeAttr('class');
+							 $InfoMsgBxP.removeAttr('class');
 						  }, 500);
 						}, 1250);
 				}, 1750);
@@ -508,59 +535,66 @@ $(document).ready(function(){
 		});
 
 		// Update Button
-			function isValid(string) {
-				var char = '~`!#$%^&*+=[]\';,/{}|\":<>?@1234567890';
-				for (var i = 0; i < string.length; i++)
+		function isValid(string) {
+			var char = '~`!#$%^&*+=[]\';,/{}|\":<>?@1234567890';
+			for (var i = 0; i < string.length; i++)
+			{
+				if (char.indexOf(string.charAt(i)) != -1)
 				{
-					if (char.indexOf(string.charAt(i)) != -1)
-					{
-						return false;
-					}
+					return false;
 				}
 			}
+		}
 
-			function checkBlank(string) {
-				var count = 0;
-				for (var i = 0; i < string.length; i++)
+		function checkBlank(string) {
+			var count = 0;
+			for (var i = 0; i < string.length; i++)
+			{
+				if (string[i] == " ")
 				{
-					if (string[i] == " ")
-					{
-						count += 1;
-					}
-				}
-				if (string.length == count || string.length <= 3)
-				{ 
-					return false; 
+					count += 1;
 				}
 			}
+			if (string.length == count || string.length <= 3)
+			{ 
+				return false; 
+			}
+		}
 
-			$('#settings').on('click','#update-button',function(e){
-				tmp_Location = $('#search').val();
+		$('#settings').on('click','#update-button',function(e){
+			tmp_Location = $('#search').val();
 
-				if (tmp_Location === "")
-				{
-					tmp_Location = SettingsArray[5];
-					GetData = true;
-				}
-				else
-				{
-					var CheckForInvalid = isValid(tmp_Location);
-					var CheckForBlank = checkBlank(tmp_Location);
+			if (tmp_Location === "")
+			{
+				tmp_Location = SettingsArray[5];
+				GetData = true;
+			}
+			else
+			{
+				var CheckForInvalid = isValid(tmp_Location);
+				var CheckForBlank = checkBlank(tmp_Location);
 
-					if ($rightMenu.hasClass('show') && (CheckForInvalid === false || CheckForBlank === false))
-					{			
-						GetData = false; 
+				if ($rightMenu.hasClass('show') && (CheckForInvalid === false || CheckForBlank === false))
+				{			
+					GetData = false; 
+					if (CheckForBlank === false)
+					{
+						UpdateErrorMsg("NotEnoughCharacters", 0);
+					}
+					else
+					{
 						UpdateErrorMsg("Char", 0);
 					}
-					else{				
-						if (SettingsArray[5] != tmp_Location)
-						{
-							getWeather(tmp_Location, true);
-							GetData = true;
-						}
+				}
+				else{				
+					if (SettingsArray[5] != tmp_Location)
+					{
+						getWeather(tmp_Location, true);
+						GetData = true;
 					}
 				}
-			});
+			}
+		});
 		// End Update Button
 
 		// Save button
