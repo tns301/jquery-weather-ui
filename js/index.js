@@ -72,9 +72,9 @@ $(document).ready(function(){
 	
 	// --------- Start Functions ----------
 		function getWeather(Loc, ShowLoading){
-			let querie = 'https://query.yahooapis.com/v1/public/yql?q=select units,astronomy,atmosphere,wind,location,item from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+ Loc +'") and u="c"&format=json';
+			let query = 'https://query.yahooapis.com/v1/public/yql?q=select units,astronomy,atmosphere,wind,location,item from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+ Loc +'") and u="c"&format=json';
 
-			$.getJSON(querie, function(data) {
+			$.getJSON(query, function(data) {
 				if (data.query.results === null)
 				{ 
 					UpdateErrorMsg("GetDataError", 0);
@@ -243,7 +243,7 @@ $(document).ready(function(){
 					$ssd.text(sunset[0]+ ":" + sunset[1] + " pm");
 				}
 
-				let totalHours = (Math.floor(sunset[0]) + 12) - parseInt(sunrise[0]);
+				let totalHours = (Math.floor(sunset[0]) + 12) - Math.floor(sunrise[0]);
 				let minDif,
 						sr = Math.floor(sunrise[1]), // Store the minutes for sunrise
 						ss = Math.floor(sunset[1]);  // Store the minutes for sunset
