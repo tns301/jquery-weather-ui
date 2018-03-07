@@ -242,12 +242,19 @@ $(document).ready(function(){
 					$srd.text(sunrise[0] + ":" + sunrise[1] + " am");
 					$ssd.text(sunset[0]+ ":" + sunset[1] + " pm");
 				}
+				
+				var hours = 12;
+				
+				if(sunset[0] >= sunrise[0])
+				{
+					 hours = 11;
+				}
 
-				let totalHours = (Math.floor(sunset[0]) + 12) - Math.floor(sunrise[0]);
+				let totalHours = (Math.floor(sunset[0]) + hours) - Math.floor(sunrise[0]);
 				let minDif,
 						sr = Math.floor(sunrise[1]), // Store the minutes for sunrise
 						ss = Math.floor(sunset[1]);  // Store the minutes for sunset
-
+				
 				if (sr < ss){
 					minDif = ss - sr;
 				}
