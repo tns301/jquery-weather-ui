@@ -809,7 +809,7 @@ body.turqoise #forget a {
   font-size: 13px;
   text-align: center;
   text-shadow: none;
-  color: rgba(255, 255, 255, 0.75);
+  color: #fff;
 }
 .wrapper .app #main #central #temp-div {
   position: absolute;
