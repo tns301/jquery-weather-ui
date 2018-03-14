@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	//Caching DOM elements
-	var $rightMenu = $('#settings'),
-			$rightButton = $('#btn-right'),
-			$weatherMenu = $('#weather-menu'),
+	var $RightMenu = $('#settings'),
+			$RightButton = $('#btn-right'),
+			$WeatherMenu = $('#weather-menu'),
 			$Main = $('#main'),
 			$Central = $('#central'),
 			$Info = $('#info-msg'),
@@ -10,7 +10,8 @@ $(document).ready(function(){
 			$InfoMsgBxP = $('#info-msg .msg-box p'),
 			$InfoMsgBxH1 = $('#info-msg .msg-box h1'),
 			$DotMenu = $('#dotmenu span'),
-			$tempDiv = $('#temp-div');
+			$TempDiv = $('#temp-div'),
+			$LiRow = $('.li_row');
 	
 	var arrayThemes = ['green','turqoise','blue','purple'],
 			randomTheme = Math.floor(Math.random() * 4),
@@ -39,8 +40,8 @@ $(document).ready(function(){
 			};
 	
 	//End Caching DOM elements
-	var currentSlide = 0,
-			currentSlideX = [0,358,718],
+	var CurrentSlide = 0,
+			CurrentSlideX = [0,358,718],
 			GetData = true,
 			tmp_Location,
 			LocalSettings,
@@ -65,8 +66,9 @@ $(document).ready(function(){
 		}
 		tmp_Location = SettingsArray[SettingsArray.length-1];
 		
-		LoadCheckboxSettings();
-		LoadIntro();
+		loadCheckboxSettings();
+		loadIntro();
+		
 		console.log("Hello there 😜");
 	})();
 	
@@ -77,17 +79,18 @@ $(document).ready(function(){
 			$.getJSON(query, function(data) {
 				if (data.query.results === null)
 				{ 
-					UpdateErrorMsg("GetDataError", 0);
+					updateErrorMsg("GetDataError", 0);
+					tmp_Location = 'Not Found';
 				}
 				else
 				{
-					if (ShowLoading === true){
-						UpdateErrorMsg("Loading", 1);
+					if (ShowLoading){
+						updateErrorMsg("Loading", 1);
 					}
-					SettingsArray[SettingsArray.length-1] = tmp_Location;
+					SettingsArray[SettingsArray.length - 1] = tmp_Location;
 
 					LoadedData = data.query.results.channel;
-					ApplyData(LoadedData);
+					applyData(LoadedData);
 				}
 			});
 		}
@@ -97,7 +100,7 @@ $(document).ready(function(){
 			localStorage.setItem('SavedData', LocalSettings);
 		}
 	
-		function WeatherIcon(d){
+		function weatherIcon(d){
 			let icon = "";
 
 				switch(Math.floor(d)) {
@@ -162,7 +165,7 @@ $(document).ready(function(){
 				$directioni	=	$('#direction i');
 		var $10days = $('.day10item');
 	
-		function ApplyData(d){
+		function applyData(d){
 			//Location
 			$locspan.text(d.location.city);
 			
@@ -175,7 +178,7 @@ $(document).ready(function(){
 			
 			// Central Info
 			let currentTemp = d.item.condition.temp;
-			let icon = WeatherIcon(d.item.condition.code);
+			let icon = weatherIcon(d.item.condition.code);
 
 			if (SettingsArray[0] == 1)
 			{
@@ -331,7 +334,7 @@ $(document).ready(function(){
 				let CurrentDay = d.item.forecast[item + 1].day;
 				let CurrentTemp = d.item.forecast[item + 1].high;
 				let CurrentTempLow = d.item.forecast[item + 1].low;
-				let CurrentIcon = WeatherIcon(d.item.forecast[item + 1].code);
+				let CurrentIcon = weatherIcon(d.item.forecast[item + 1].code);
 
 				if (SettingsArray[0] == 1)
 				{
@@ -348,7 +351,7 @@ $(document).ready(function(){
 				$($10days[item]).find('span').html(CurrentDay + "</br><i>" + CurrentTemp + " <strong>/</strong> " + CurrentTempLow + "</i>");
 			}
 		}
-		function LoadCheckboxSettings(){	
+		function loadCheckboxSettings(){	
 			// General Settings
 			for (var i = 0; i < array_ID.length; i++)
 			{
@@ -358,11 +361,11 @@ $(document).ready(function(){
 				}
 			}
 			// Apply theme
-			$Main.addClass(SettingsArray[SettingsArray.length-2] + " poor-Mozilla");
+			$Main.addClass(SettingsArray[SettingsArray.length-2] + ' poor-Mozilla');
 			$('span.' + SettingsArray[SettingsArray.length-2]).addClass('current');
 		}
-		function LoadIntro(){
-			$('#btn-right').css("display", "none");
+		function loadIntro(){
+			$('#btn-right').css('display','none');
 			$('#weather-menu-btn').css("display", "none");
 
 			$('#introscreen').addClass('sunloading');
@@ -381,22 +384,19 @@ $(document).ready(function(){
 			}, 7500);
 		}
 		function convertToF(temp){
-			temp = Math.round(temp * 9 / 5 + 32) + " ºF";
-			return temp;
+			return Math.round(temp * 9 / 5 + 32) + ' ºF';
 		}
 		function convertToC(temp){
-			temp = Math.round((temp - 32)/(9 / 5)) + " ºC";
-			return temp;
+			return Math.round((temp - 32)/(9 / 5)) + ' ºC';
 		}
 		function convertToMiles(speed){
-			speed = Math.round(speed / 1.60934);
-			return speed;
+			return Math.round(speed / 1.60934);
 		}
 	
 	// --------- Start Function Buttons -----------
 		// Update Checkbox
-		$('input[type=checkbox]').on('change',function(e){
-			let index = $( 'input[type=checkbox]' ).index(this);
+		$('input[type=checkbox]').on('change', function(e){
+			let index = $('input[type=checkbox]').index(this);
 
 			if ($(this).prop('checked'))
 			{
@@ -409,20 +409,20 @@ $(document).ready(function(){
 		});
 
 		// Open Settings Menu
-		$('#main').on('click','#btn-right, #weather-menu-btn',function(e){
+		$('#main').on('click','#btn-right, #weather-menu-btn', function(e){
 			e.preventDefault();
 			var $CurrentButton = $(this);
 
-			if ($CurrentButton.is("#btn-right"))
+			if ($CurrentButton.is('#btn-right'))
 			{
-				$rightButton.toggleClass('open');
-				$rightMenu.toggleClass('show');
+				$RightButton.toggleClass('open');
+				$RightMenu.toggleClass('show');
 
 				$('body').removeAttr('class');
 
-				if ($rightMenu.hasClass('show'))
+				if ($RightMenu.hasClass('show'))
 				{
-					$rightButton.prop('disabled', true);
+					$RightButton.prop('disabled', true);
 					$Main.removeClass('poor-Mozilla');
 
 					$('body').addClass(SettingsArray[4]);
@@ -433,21 +433,23 @@ $(document).ready(function(){
 
 					setTimeout(function()
 					{
-						$rightButton.prop('disabled', false);
+						$RightButton.prop('disabled', false);
 						$Main.addClass('poor-Mozilla');
 					}, 595);	
 				}
-				else if ($rightMenu.hasClass(''))
+				else if ($RightMenu.hasClass(''))
 				{
-					$rightButton.prop('disabled', true);
+					$RightButton.prop('disabled', true);
 					$Main.removeClass('poor-Mozilla');
-
-					ApplyData(LoadedData);
+					
+					if (LoadedData != null){
+						applyData(LoadedData);
+					}
 
 					$('body').removeAttr('class');
 					setTimeout(function()
 					{
-						$rightButton.prop('disabled', false);
+						$RightButton.prop('disabled', false);
 						for (var ii = 0; ii < SettingsListLi.length; ii++){
 							AnimiateLiMenu(ii, SettingsListLi[ii], 1);
 						}
@@ -455,17 +457,17 @@ $(document).ready(function(){
 					}, 595);
 				}
 			}
-			else if ($CurrentButton.is("#weather-menu-btn"))
+			else if ($CurrentButton.is('#weather-menu-btn'))
 			{
-				$weatherMenu.toggleClass('show');
+				$WeatherMenu.toggleClass('show');
 
-				if ($tempDiv.hasClass(''))
+				if ($TempDiv.hasClass(''))
 				{
-					$tempDiv.addClass('weather-menu-show');
+					$TempDiv.addClass('weather-menu-show');
 				}
 				else
 				{
-					$tempDiv.removeClass('weather-menu-show');
+					$TempDiv.removeClass('weather-menu-show');
 				}
 			}
 
@@ -484,7 +486,7 @@ $(document).ready(function(){
 		});
 
 		// Error Button
-		$('#info-msg').on('click','#ok-btn',function(e){
+		$('#info-msg').on('click','#ok-btn', function(e){
 			if ($Info.hasClass('show'))
 			{
 				$Info.removeClass('show');
@@ -495,7 +497,8 @@ $(document).ready(function(){
 				}, 1000);
 			}
 		});	
-		function UpdateErrorMsg(value, type){
+		
+		function updateErrorMsg(value, type){
 			$Info.addClass('show');
 			
 			$InfoMsgBx.addClass('open');
@@ -528,7 +531,7 @@ $(document).ready(function(){
 		// End Error Button
 
 		// Change Theme
-		$('.row').on('click','span',function(e){
+		$('.row').on('click','span', function(e){
 			var new_theme = $(this).attr('class').split(' ');
 			if (new_theme[1] != 'current')
 			{
@@ -551,6 +554,7 @@ $(document).ready(function(){
 					return false;
 				}
 			}
+			return true;
 		}
 
 		function checkBlank(string) {
@@ -566,9 +570,13 @@ $(document).ready(function(){
 			{ 
 				return false; 
 			}
+			else
+			{
+				return true;
+			}
 		}
 
-		$('#settings').on('click','#update-button',function(e){
+		$('#settings').on('click','#update-button', function(e){
 			tmp_Location = $('#search').val();
 
 			if (tmp_Location === "")
@@ -581,19 +589,21 @@ $(document).ready(function(){
 				var CheckForInvalid = isValid(tmp_Location);
 				var CheckForBlank = checkBlank(tmp_Location);
 
-				if ($rightMenu.hasClass('show') && (CheckForInvalid === false || CheckForBlank === false))
+				if ($RightMenu.hasClass('show') && (!CheckForInvalid || !CheckForBlank))
 				{			
-					GetData = false; 
-					if (CheckForBlank === false)
+					GetData = false;
+					
+					if (!CheckForBlank)
 					{
-						UpdateErrorMsg("NotEnoughCharacters", 0);
+						updateErrorMsg('NotEnoughCharacters', 0);
 					}
 					else
 					{
-						UpdateErrorMsg("Char", 0);
+						updateErrorMsg('Char', 0);
 					}
 				}
-				else{				
+				else
+				{				
 					if (SettingsArray[5] != tmp_Location)
 					{
 						getWeather(tmp_Location, true);
@@ -605,40 +615,41 @@ $(document).ready(function(){
 		// End Update Button
 
 		// Save button
-			$('#settings').on('click','#save-button',function(e){		
+		$('#settings').on('click','#save-button', function(e){		
 			// Check if location is valid or not and add the info msg.
-			if ($rightMenu.hasClass('show') && (GetData === false))
+			if ($RightMenu.hasClass('show') && (GetData === false))
 			{			
-				UpdateErrorMsg("Loc", 0);
+				updateErrorMsg('Loc', 0);
 			}
 			else
 			{			
-				UpdateErrorMsg("Loading2", 1);		
+				updateErrorMsg('Loading2', 1);		
 				toLocalStorage();
 			}
 		});
 
 		// Dot Menu
-			$('#weather-menu').on('click','.day_left, .day_right, #dotmenu span',function(){
+		$('#weather-menu').on('click','.day_left, .day_right, #dotmenu span', function(){
 			var $button = $(this);
+			var $currentDay = $('#dotmenu .currentday');
 
-			if ($button.hasClass('day_right') && currentSlide != 2)
+			if ($button.hasClass('day_right') && CurrentSlide != 2)
 			{
-				currentSlide += 1;
+				CurrentSlide += 1;
 			 }
-			else if ($button.hasClass('day_left') && currentSlide !== 0)
+			else if ($button.hasClass('day_left') && CurrentSlide !== 0)
 			{
-				currentSlide -= 1;
+				CurrentSlide -= 1;
 			}
 			else if ($button.hasClass(''))
 			{
 				var indexbtn = $button.index();
-				currentSlide = indexbtn;
+				CurrentSlide = indexbtn;
 			}	
 
-			$('.li_row').css('transform', 'translateX(-' + currentSlideX[currentSlide] + 'px)');
-			$('.currentday').removeClass('currentday');
-			$DotMenu.eq(currentSlide).addClass('currentday');
+			$LiRow.css('transform', 'translateX(-' + CurrentSlideX[CurrentSlide] + 'px)');
+			$currentDay.removeClass('currentday');
+			$DotMenu.eq(CurrentSlide).addClass('currentday');
 		});
 	
 	//----------- End Function Buttons -----------
