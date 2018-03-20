@@ -248,7 +248,7 @@ $(document).ready(function(){
 				
 				var hours = 12;
 				
-				if(sunset[0] >= sunrise[0])
+				if(sunset[0] > sunrise[0])
 				{
 					 hours = 11;
 				}
