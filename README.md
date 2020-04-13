@@ -6,6 +6,11 @@
 * LESS
 * Yahoo Weather API (Deprecated)
 
+### Project setup:
+  ```
+  git clone repository
+  ```
+
 ### Features:
 
 * Ability to save the settings when the page is reloaded and retrieve the current settings using LocalStorage from HTML5.
