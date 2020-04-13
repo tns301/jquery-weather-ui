@@ -1,5 +1,4 @@
-A Pen created at CodePen.io. You can find this one at https://codepen.io/tns301/pen/yXLWjQ.
-
+### Live Preview: https://codepen.io/tns301/pen/yXLWjQ.
 
 ### Features:
 
