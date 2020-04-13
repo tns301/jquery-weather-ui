@@ -1,5 +1,11 @@
 ### Live Preview: https://codepen.io/tns301/pen/yXLWjQ.
 
+### Tools:
+* jQuery
+* Font-awsome 4.7
+* LESS
+* Yahoo Weather API (Deprecated)
+
 ### Features:
 
 * Ability to save the settings when the page is reloaded and retrieve the current settings using LocalStorage from HTML5.
