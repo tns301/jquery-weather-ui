@@ -11,6 +11,10 @@
   git clone repository
   ```
 
+  ```
+  start http-server
+  ```
+
 ### Features:
 
 * Ability to save the settings when the page is reloaded and retrieve the current settings using LocalStorage from HTML5.
